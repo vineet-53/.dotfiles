@@ -71,7 +71,7 @@ map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 map({ "n", "v" }, ";y", [["+y]])
 map({ "n", "v" }, ";d", [["+d]])
 map({ "n", "v" }, "<leader>d", [["_d]])
-map({ "n", "v" }, "<leader>p", [["_d]])
+map({ "n", "v" }, "<leader>p", [["_p]])
 
 -- Resize window using <ctrl> arrow keys
 map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })

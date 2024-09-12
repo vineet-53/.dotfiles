@@ -39,14 +39,34 @@ return {
       pickers = {
         live_grep = {
           find_command = find_command,
-          file_ignore_patterns = { "node_modules", ".git", ".venv" },
+          file_ignore_patterns = {
+            "./node_modules",
+            "*/node_modules/*",
+            "*/node_modules",
+            "*/.git",
+            "*/.git/*",
+            ".venv",
+            "node_modules",
+            ".git",
+            ".venv",
+          },
           additional_args = function(_)
             return { "--hidden" }
           end,
         },
         find_files = {
           find_command = find_command,
-          file_ignore_patterns = { "node_modules", ".git", ".venv" },
+          file_ignore_patterns = {
+            "./node_modules",
+            "*/node_modules/*",
+            "*/node_modules",
+            "*/.git",
+            "*/.git/*",
+            ".venv",
+            "node_modules",
+            ".git",
+            ".venv",
+          },
           hidden = true,
           no_ignore = true,
         },
@@ -55,13 +75,17 @@ return {
         "fzf",
       },
       file_ignore_patterns = {
-        "./node_modules/*",
+        "./node_modules",
+        "*/node_modules/*",
+        "*/node_modules",
+        "*/.git",
+        "*/.git/*",
+        ".venv",
         "node_modules",
-        "^node_modules/*",
-        "node_modules/*",
         ".git",
-        "./.git",
+        ".venv",
       },
+
       defaults = {
         hidden = true,
         layout_strategy = "vertical",
@@ -85,6 +109,7 @@ return {
     vim.keymap.set("n", ";f", builtin.find_files, { desc = "[F]ind Files" })
     vim.keymap.set("n", ";g", builtin.live_grep, { desc = "[G]rep String" })
     vim.keymap.set("n", ";b", builtin.buffers, { desc = "[F]ind Buffers" })
+    vim.keymap.set("n", "<leader>vh", builtin.help_tags, { desc = "[H]elp tags" })
     vim.keymap.set("n", ";s", function()
       local word = vim.fn.expand("<cword>")
       builtin.grep_string({ search = word })

@@ -1,6 +1,6 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  enabled =false,
+  enabled = false,
   branch = "v3.x",
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -15,14 +15,14 @@ return {
       },
       filesystem = {
         filtered_items = {
-          visible = false, -- when true, they will just be displayed differently than normal items
           hide_dotfiles = false,
-          hide_gitignored = false,
-          hide_hidden = false,
-        },
-        follow_current_file = {
-          enabled = true,
-          leave_dirs_open = true,
+          hide_by_name = {
+            ".git",
+            ".DS_Store",
+          },
+          always_show = {
+            ".env",
+          },
         },
       },
       follow_current_file = {

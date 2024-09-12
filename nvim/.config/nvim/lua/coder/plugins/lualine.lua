@@ -3,9 +3,6 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     require("lualine").setup({
-      options = {
-        theme = "catppuccin",
-      },
       sections = {
         lualine_a = { "mode" },
         lualine_b = { "diff", "diagnostics" },
@@ -15,7 +12,8 @@ return {
           {
             -- require("noice").api.statusline.mode.get,
             -- cond = require("noice").api.statusline.mode.has,
-            -- color = { fg = "#ff9e64" },
+            -- color = { fg = "#cba6f7" },
+            -- -- color = { fg = "#ff9e64" },
           },
         },
         lualine_y = { "progress" },

@@ -8,7 +8,7 @@ notification(){
 
 menu(){
   printf "1. Lofi Girl \n"
-  printf "2. eminem\n"
+  printf "2. Eminem\n"
   printf "3. Anime Lofi \n"
   printf "4. Top Music 2024 \n"
   printf "5. Bollywood Hits Mashup Songs\n"
@@ -40,7 +40,7 @@ main() {
       ;;
     2)
       notification "Eminem Playlist ☕️🎶";
-      URL="https://www.youtube.com/watch?v=gYg3Mr4rbRI&list=PLsVghKAHi7V0tsJCZ3nP8RPKPamulOSLR&index=3"
+      URL="https://www.youtube.com/playlist?list=PLsVghKAHi7V0tsJCZ3nP8RPKPamulOSLR"
       ADDITIONAL_ARGS="--volume=70 --loop-playlist=inf"
       break
       ;;

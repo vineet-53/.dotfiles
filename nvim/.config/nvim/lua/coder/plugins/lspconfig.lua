@@ -1,29 +1,17 @@
 return {
   {
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
-    opts = {
-      ensure_installed = {
-        "prettier",
-        "stylua",
-        "isort",
-        "black",
-        "pylint",
-        "eslint_d",
-      },
-    },
-    config = function(_, opts)
-      require("mason-tool-installer").setup(opts)
-    end,
-  },
-  {
     "williamboman/mason.nvim",
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
     config = function()
+      -- import mason
       local mason = require("mason")
+      -- import mason-lspconfig
       local mason_lspconfig = require("mason-lspconfig")
+      local mason_tool_installer = require("mason-tool-installer")
+      -- enable mason and configure icons
       mason.setup({
         ui = {
           icons = {
@@ -32,28 +20,32 @@ return {
             package_uninstalled = "✗",
           },
         },
-        ensure_installed = {
-          "markdownlint-cli2",
-          "markdown-toc",
-        },
       })
+
       mason_lspconfig.setup({
-        auto_install = true,
+        -- list of servers for mason to install
         ensure_installed = {
-          "lua_ls",
-          "clangd",
-          "tailwindcss",
-          "tsserver",
-          "rust_analyzer",
+          "ts_ls",
           "html",
           "cssls",
+          "tailwindcss",
           "svelte",
+          "lua_ls",
+          "graphql",
+          "emmet_ls",
           "prismals",
           "pyright",
-          "bashls",
-          "yamlls",
-          "gopls",
-          "jsonls",
+        },
+      })
+
+      mason_tool_installer.setup({
+        ensure_installed = {
+          "prettier", -- prettier formatter
+          "stylua", -- lua formatter
+          "isort", -- python formatter
+          "black", -- python formatter
+          "pylint",
+          "eslint_d",
         },
       })
     end,
@@ -66,42 +58,48 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
-      "WhoIsSethDaniel/mason-tool-installer.nvim",
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
       "antosha417/nvim-lsp-file-operations",
     },
-    lazy = false,
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       local lspconfig = require("lspconfig")
-      lspconfig.clangd.setup({
+
+      local servers = { "clangd", "lua_ls", "cssls", "pyright", "ts_ls", "tailwindcss", "eslint" }
+
+      for _, lsp in ipairs(servers) do
+        lspconfig[lsp].setup({
+          capabilities = capabilities,
+        })
+      end
+      local configs = require("lspconfig/configs")
+      capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+      lspconfig.emmet_ls.setup({
         capabilities = capabilities,
+        filetypes = {
+          "css",
+          "eruby",
+          "html",
+          "javascript",
+          "typescript",
+          "tsx",
+          "less",
+          "sass",
+          "scss",
+          "svelte",
+          "pug",
+          "vue",
+        },
+        init_options = {
+          html = {
+            options = {
+              ["bem.enabled"] = true,
+            },
+          },
+        },
       })
-      lspconfig.tailwindcss.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.tsserver.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.cssls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.solargraph.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.html.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
-      })
-      --- vim auto cmmands
-      --   vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-      --   vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-      --   vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
-      --   vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
     end,
   },
   {

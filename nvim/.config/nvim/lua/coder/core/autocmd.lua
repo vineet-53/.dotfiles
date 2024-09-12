@@ -118,11 +118,21 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- wrap and check for spell in text filetypes
 vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("markdown_conceal", { clear = true }),
+  pattern = { "markdown", "*.md", "md", "mdx" },
+  callback = function()
+    vim.opt_local.conceallevel = 2
+  end,
+})
+
+-- wrap and check for spell in text filetypes
+vim.api.nvim_create_autocmd("FileType", {
   group = augroup("wrap_spell", { clear = true }),
   pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true
+    vim.opt_local.conceallevel = 2
   end,
 })
 
@@ -180,5 +190,20 @@ au("LspAttach", {
 
     opts.desc = "Restart LSP"
     keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+  end,
+})
+
+au({ "CursorMoved", "CursorMovedI", "BufEnter" }, {
+  group = augroup("CursorScrolloff", { clear = true }),
+  callback = function()
+    local win_h = vim.api.nvim_win_get_height(0)
+    local off = math.min(vim.o.scrolloff, math.floor(win_h / 2))
+    local dist = vim.fn.line("$") - vim.fn.line(".")
+    local rem = vim.fn.line("w$") - vim.fn.line("w0") + 1
+    if dist < off and win_h - rem + dist < off then
+      local view = vim.fn.winsaveview()
+      view.topline = view.topline + off - (win_h - rem + dist)
+      vim.fn.winrestview(view)
+    end
   end,
 })

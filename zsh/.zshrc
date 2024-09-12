@@ -8,12 +8,19 @@ eval "$(starship init zsh)"
 
 
 # List Plugins
-plugins=(git sudo history encode64 copypath zsh-autosuggestions zsh-syntax-highlighting web-search vi-mode)
+plugins=(git history encode64 copypath zsh-autosuggestions zsh-syntax-highlighting web-search)
 
 # sources
 source $ZSH/oh-my-zsh.sh
 
+bindkey -s ^f "tmux-sessionizer.sh\n"
+bindkey -s ^r "find-recurrsive.sh\n"
+bindkey -s ^o "competetive-programming.sh\n"
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 # Helpful aliases
+alias tt='yazi ~/Pictures/timetable.png'
 alias  c='clear' # clear terminal
 alias  l='eza -lh  --icons=auto' # long list
 alias ls='eza -1 --icons=always' # short list
@@ -36,8 +43,6 @@ alias ......="cd ../../../../.."
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 alias mkdir='mkdir -p'
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 #Display Pokemon
 # pokemon-colorscripts --no-title -r 1,3,6
@@ -48,19 +53,19 @@ alias ml="cd ~/Codes/machine-learning"
 alias zconf="nvim ~/.zshrc"
 alias zcompile="source ~/.zshrc"
 # alias t="tmux "
-# alias ta="tmux attach "
+alias ta="tmux attach "
 # alias tas="tmux attach-session "
-alias tmux="sh ~/.local/share/bin/tmux-sessionizer.sh"
 alias t="sh ~/.local/share/bin/tmux-sessionizer.sh"
 alias vim="nvim"
 alias setwall="swww img --transition-type=random "
 alias notes="~/Documents/Obsidian-Notes && nvim"
 alias cat="bat -pp"
-alias leet="nvim leetcode.nvim"
+# alias leet="nvim leetcode.nvim"
 alias pwdy="echo $(pwd) | wl-copy -p"
 alias view="yazi "
 alias vim="nvim "
 alias lg="lazygit"
+alias rg="sh search.sh"
 
 # Custom dir alias
 alias clones="cd ~/Downloads/clones"
@@ -69,14 +74,15 @@ alias temp="cd ~/temp"
 alias nvc='cd $HOME/.config/nvim && vim'
 
 # Custom Fuzzy finder
-alias inv="fzf --delimiter=' ' | nvim -f -"
-alias ff='fzf --preview="bat --color=always {}"'
-alias fd='fzf --walker=,dir'
+# alias inv="fzf --delimiter=' ' | nvim -f -"
+# alias ff='fzf --preview="bat --color=always {}"'
+alias fd="find ~ -type d -not -path '*/.*/*' -not -path '*/.*' -not -path '*/node_modules/*' -not -path '*/node_modules' -not -path '*/.git/*' -not -path '*/.git' | fzf"
 alias gd='cd $(fd)'
-alias fhome='fzf --walker=,dir --walker-root=$HOME'
-alias froot='fzf --walker=,dir --walker-root=/ --walker-skip=/home'
-alias fcodes='fzf --walker=,dir --walker-root=$HOME/Codes/'
-alias codes='cd $(fcodes)'
+alias fzf='fzf --preview="bat --color=always {}"'
+# alias froot='fzf --walker=,dir --walker-root=/ --walker-skip=/home'
+
+# alias fcodes='fzf --walker=,dir --walker-root=$HOME/Codes/'
+# alias codes='cd $(fcodes)'
 
 # Disabled
 # alias twd='alacritty --working-directory=$(pwd) & exit'
@@ -89,11 +95,12 @@ alias codes='cd $(fcodes)'
 alias d="cd /mnt/drive"
 alias e="cd /mnt/drive2"
 alias hdd="cd /mnt/hdd"
-alias window="cd /mnt/window"
+alias window="cd /mnt/windows"
 
 # Custom Courses Video Play
 alias vid="cd /mnt/drive2/Telegram/0-100Cohort/0-100Cohort"
-alias play="mpv --playlist=/mnt/drive/Telegram/LoveBabbar"
+# alias play="mpv --playlist=/mnt/drive/Telegram/LoveBabbar"
+alias play="sh ~/.local/share/bin/radio.sh"
 
 # Git
 alias ga="git add "
@@ -110,6 +117,7 @@ alias cpro="sh ~/.local/share/bin/competetive-programming.sh "
 
 # Machin Learning
 alias activate="source $HOME/.venv/bin/activate"
+alias postman="~/Downloads/postman-linux-x64/Postman/Postman"
 
 # Python
 alias piv="~/.venv/bin/pip "

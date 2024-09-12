@@ -3,7 +3,10 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   build = ":TSUpdate",
   dependencies = {
-    "windwp/nvim-ts-autotag",
+    {
+      "windwp/nvim-ts-autotag",
+      config = true,
+    },
   },
   config = function()
     local treesitter = require("nvim-treesitter.configs")
@@ -17,7 +20,6 @@ return {
       ensure_installed = {
         "json",
         "javascript",
-        "typescript",
         "tsx",
         "yaml",
         "html",
@@ -45,7 +47,12 @@ return {
         "vimdoc",
       },
     })
-
+    vim.filetype.add({
+      extension = {
+        mdx = "mdx",
+      },
+    })
+    vim.treesitter.language.register("markdown", "mdx")
     local lspDiagnosticsVisible = false
 
     vim.diagnostic.config({

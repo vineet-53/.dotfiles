@@ -1,11 +1,11 @@
 vim.cmd("let g:netrw_liststyle = 3")
 local opt = vim.opt
-opt.guicursor = ""
+opt.gcr = ""
 
 opt.conceallevel = 1
 opt.number = true
 
-opt.undodir = "/home/coder/.undodir"
+vim.o.undodir = "/home/coder/.undodir"
 opt.undofile = true
 
 -- tabs & indentation
@@ -35,6 +35,3 @@ opt.splitbelow = true -- split horizontal window to the bottom
 vim.opt.clipboard = ""
 vim.opt.splitkeep = "cursor"
 vim.opt.cursorline = true
-
--- cmd completions
-opt.wildmode = { "list", "longest" }
