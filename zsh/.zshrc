@@ -56,14 +56,12 @@ alias zcompile="source ~/.zshrc"
 alias ta="tmux attach "
 # alias tas="tmux attach-session "
 alias t="sh ~/.local/share/bin/tmux-sessionizer.sh"
-alias vim="nvim"
 alias setwall="swww img --transition-type=random "
 alias notes="~/Documents/Obsidian-Notes && nvim"
 alias cat="bat -pp"
 # alias leet="nvim leetcode.nvim"
 alias pwdy="echo $(pwd) | wl-copy -p"
 alias view="yazi "
-alias vim="nvim "
 alias lg="lazygit"
 alias rg="sh search.sh"
 
@@ -71,7 +69,7 @@ alias rg="sh search.sh"
 alias clones="cd ~/Downloads/clones"
 alias desk="cd ~/Desktop"
 alias temp="cd ~/temp"
-alias nvc='cd $HOME/.config/nvim && vim'
+alias nvc='cd $HOME/.config/nvim && nvim'
 
 # Custom Fuzzy finder
 # alias inv="fzf --delimiter=' ' | nvim -f -"
@@ -81,8 +79,9 @@ alias gd='cd $(fd)'
 alias fzf='fzf --preview="bat --color=always {}"'
 # alias froot='fzf --walker=,dir --walker-root=/ --walker-skip=/home'
 
-# alias fcodes='fzf --walker=,dir --walker-root=$HOME/Codes/'
-# alias codes='cd $(fcodes)'
+alias fcodes='fzf --walker=,dir --walker-root=$HOME/Codes/'
+alias codes='cd $(fcodes)'
+alias vim='nvim '
 
 # Disabled
 # alias twd='alacritty --working-directory=$(pwd) & exit'

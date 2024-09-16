@@ -6,8 +6,18 @@ function ColorMyPencils(color)
 end
 
 return {
+
+  {
+    "ellisonleao/gruvbox.nvim",
+    config = function()
+      ColorMyPencils("gruvbox")
+      vim.opt.background = "dark"
+    end,
+    opts = ...,
+  },
   {
     "folke/tokyonight.nvim",
+    enabled = false,
     opts = {
       style = "night",
     },
