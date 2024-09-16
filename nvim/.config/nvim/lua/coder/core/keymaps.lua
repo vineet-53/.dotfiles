@@ -8,7 +8,7 @@ map("n", "x", '"_x')
 map("n", "val", "V")
 -- move line up and down
 map("v", "J", ":m '>+1<CR>gv=gv", opts)
-map("v", "K", ":m '<-2<CR>gv=gv", otps)
+map("v", "K", ":m '<-2<CR>gv=gv", opts)
 
 -- cursor don't move at end easily
 map("n", "J", "mzJ`z")

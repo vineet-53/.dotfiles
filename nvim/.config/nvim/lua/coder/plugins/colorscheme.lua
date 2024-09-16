@@ -1,36 +1,36 @@
-function ColorMyPencils(color)
-  color = color or "rose-pine"
-  vim.cmd.colorscheme(color)
-  vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-end
-
 return {
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    config = function()
+      require("rose-pine").setup({
+        styles = {
+          transparency = true,
+        },
+      })
+      vim.cmd.colorscheme("rose-pine-moon")
+      vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    end,
+  },
 
   {
-    "ellisonleao/gruvbox.nvim",
+    "navarasu/onedark.nvim",
+    enabled = false,
     config = function()
-      ColorMyPencils("gruvbox")
-      vim.opt.background = "dark"
+      require("onedark").setup({
+        style = "darker",
+      })
+      require("onedark").load()
     end,
-    opts = ...,
   },
   {
-    "folke/tokyonight.nvim",
+    "kaiuri/nvim-juliana",
     enabled = false,
-    opts = {
-      style = "night",
+    lazy = false,
+    opts = { --[=[ configuration --]=]
     },
-    config = function()
-      ColorMyPencils("tokyonight")
-      vim.opt.background = "dark"
-    end,
+    config = true,
   },
-  {
-    "nyoom-engineering/oxocarbon.nvim",
-    enabled = false,
-    config = function()
-      ColorMyPencils("oxocarbon")
-    end,
-  },
+  { "catppuccin/nvim", enabled = false, name = "catppuccin", priority = 1000 },
 }

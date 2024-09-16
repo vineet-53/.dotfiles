@@ -1,7 +1,6 @@
 return {
   "stevearc/oil.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  enabled = false,
   config = function()
     local oil = require("oil")
     oil.setup({
@@ -17,7 +16,7 @@ return {
       },
       float = {
         padding = 2,
-        max_width = 80,
+        max_width = 90,
         max_height = 0,
         border = "rounded",
       },

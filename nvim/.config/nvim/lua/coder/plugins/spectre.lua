@@ -1,3 +1,4 @@
+-- good for bluk renaming
 return {
   {
     "nvim-pack/nvim-spectre",

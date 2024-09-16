@@ -41,7 +41,7 @@ return {
           find_command = find_command,
           file_ignore_patterns = {
             "./node_modules",
-            "*/node_modules/*",
+            "*node_modules/*",
             "*/node_modules",
             "*/.git",
             "*/.git/*",
@@ -73,6 +73,9 @@ return {
       },
       extensions = {
         "fzf",
+        ["ui-select"] = {
+          require("telescope.themes").get_dropdown(),
+        },
       },
       file_ignore_patterns = {
         "./node_modules",
@@ -98,7 +101,7 @@ return {
             ["<C-p>"] = actions.move_selection_previous, -- move to prev result
             ["<C-n>"] = actions.move_selection_next, -- move to next result
             ["<C-q>"] = actions.send_selected_to_qflist + custom_actions.open_trouble_qflist,
-            ["<C-t>"] = trouble_telescope.open,
+            ["<C-x>"] = trouble_telescope.open,
           },
         },
       },
@@ -108,8 +111,8 @@ return {
     local builtin = require("telescope.builtin")
     vim.keymap.set("n", ";f", builtin.find_files, { desc = "[F]ind Files" })
     vim.keymap.set("n", ";g", builtin.live_grep, { desc = "[G]rep String" })
-    vim.keymap.set("n", ";b", builtin.buffers, { desc = "[F]ind Buffers" })
-    vim.keymap.set("n", "<leader>vh", builtin.help_tags, { desc = "[H]elp tags" })
+    vim.keymap.set("n", ";m", builtin.buffers, { desc = "[F]ind Buffers" })
+    vim.keymap.set("n", "<leader>h", builtin.help_tags, { desc = "[H]elp tags" })
     vim.keymap.set("n", ";s", function()
       local word = vim.fn.expand("<cword>")
       builtin.grep_string({ search = word })

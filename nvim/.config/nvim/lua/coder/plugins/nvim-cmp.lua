@@ -1,25 +1,31 @@
 return {
   "hrsh7th/nvim-cmp",
+
   event = "VimEnter",
   dependencies = {
+    "hrsh7th/cmp-buffer", -- source for text in buffer
+    "hrsh7th/cmp-path", -- source for file system paths
     {
       "L3MON4D3/LuaSnip",
-      version = "v2.*",
+      -- follow latest release.
+      version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+      -- install jsregexp (optional!).
       build = "make install_jsregexp",
     },
     "saadparwaiz1/cmp_luasnip", -- for autocompletion
-    "hrsh7th/cmp-buffer", -- source for text in buffer
-    "hrsh7th/cmp-cmdline",
-    "hrsh7th/cmp-path", -- source for file system paths
+    "rafamadriz/friendly-snippets", -- useful snippets
     "onsails/lspkind.nvim", -- vs-code like pictograms
-    "rafamadriz/friendly-snippets",
   },
   config = function()
     local cmp = require("cmp")
+
     local luasnip = require("luasnip")
-    require("lspkind")
+
+    local lspkind = require("lspkind")
+
     -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
-    require("luasnip.loaders.from_vscode")
+    require("luasnip.loaders.from_vscode").lazy_load()
+
     cmp.setup({
       completion = {
         completeopt = "menu,menuone,preview,noselect",
@@ -29,18 +35,19 @@ return {
           luasnip.lsp_expand(args.body)
         end,
       },
-
       mapping = cmp.mapping.preset.insert({
-        ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-d>"] = cmp.mapping.scroll_docs(4),
+        ["<C-b>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.abort(),
-        -- ["<CR>"] = cmp.mapping.confirm({ select = true }),
-        ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+        ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ["<C-CR>"] = cmp.mapping.confirm({
+          behavior = cmp.ConfirmBehavior.Replace,
+          select = true,
+        }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
       }),
-
       -- sources for autocompletion
       sources = cmp.config.sources({
         { name = "path" },
