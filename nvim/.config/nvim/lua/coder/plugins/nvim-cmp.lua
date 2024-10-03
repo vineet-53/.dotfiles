@@ -42,7 +42,6 @@ return {
         ["<C-d>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.abort(),
-        -- ["<CR>"] = cmp.mapping.confirm({ select = true }),
         ["<C-y>"] = cmp.mapping.confirm({ select = true }),
       }),
       -- sources for autocompletion

@@ -1,8 +1,8 @@
 vim.cmd("let g:netrw_liststyle = 3")
 local opt = vim.opt
-opt.gcr = ""
+-- opt.gcr = ""
 
-opt.conceallevel = 1
+opt.conceallevel = 0
 opt.number = true
 
 vim.o.undodir = "/home/coder/.undodir"
@@ -12,7 +12,8 @@ opt.undofile = true
 opt.rnu = true
 opt.tabstop = 4 -- 2 spaces for tabs (prettier default)
 
-opt.shiftwidth = 2 -- 2 spaces for indent width
+vim.o.tabstop = 4
+opt.shiftwidth = 4 -- 2 spaces for indent width
 opt.expandtab = true -- expand tab to spaces
 opt.wrap = false
 opt.swapfile = false
@@ -36,3 +37,9 @@ opt.splitbelow = true -- split horizontal window to the bottom
 vim.opt.clipboard = ""
 vim.opt.splitkeep = "cursor"
 vim.opt.cursorline = true
+vim.opt.formatoptions:remove({ "c", "r", "o" })
+vim.opt.shortmess:append("c") -- Don't give |ins-completion-menu| messages (default: does not include 'c')
+vim.opt.iskeyword:append("-") -- Hyphenated words recognized by searches (default: does not include '-')
+vim.o.showmode = false -- We don't need to see things like -- INSERT -- anymore (default: true)
+vim.o.hlsearch = false -- Set highlight on search (default: true)
+vim.o.linebreak = true
