@@ -1,7 +1,18 @@
 return {
   {
+    "savq/melange-nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.opt.termguicolors = true
+      vim.o.background = "dark"
+      vim.cmd.colorscheme("melange")
+    end,
+  },
+  {
     "rose-pine/neovim",
     name = "rose-pine",
+    enabled = false,
     config = function()
       require("rose-pine").setup({
         styles = {

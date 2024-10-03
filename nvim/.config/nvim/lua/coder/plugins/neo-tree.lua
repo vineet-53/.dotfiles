@@ -1,6 +1,5 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  enabled = false,
   branch = "v3.x",
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -21,6 +20,7 @@ return {
             ".DS_Store",
           },
           always_show = {
+            "*.env*",
             ".env",
           },
         },
@@ -56,6 +56,6 @@ return {
       },
     })
     vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>", {})
-    vim.keymap.set("n", "<leader>b", ":Neotree buffers reveal float<CR>", {})
+    -- vim.keymap.set("n", "<leader>b", ":Neotree buffers reveal float<CR>", {})
   end,
 }

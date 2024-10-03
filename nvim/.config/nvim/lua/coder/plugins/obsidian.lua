@@ -5,15 +5,15 @@ return {
       workspaces = {
         {
           name = "Obsidian Notes",
-          path = "~/Documents/Obsidian-Notes/",
+          path = "/mnt/drive2/obsidian-notes/",
         },
       },
-      notes_subdir = "inbox",
-      new_notes_location = "notes_subdir",
+      notes_subdir = "00_Inbox",
+      new_notes_location = "00_Inbox",
       disable_frontmatter = true,
 
       templates = {
-        subdir = "templates",
+        subdir = "07_Templates",
         date_format = "%Y-%m-%d",
         time_format = "%H:%M:%S",
       },
@@ -35,13 +35,13 @@ return {
       checkboxes = {
         -- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
         [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
-        ["x"] = { char = "", hl_group = "ObsidianDone" },
+        -- ["x"] = { char = "", hl_group = "ObsidianDone" },
         [">"] = { char = "", hl_group = "ObsidianRightArrow" },
         ["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
         ["!"] = { char = "", hl_group = "ObsidianImportant" },
         -- Replace the above with this if you don't have a patched font:
         -- [" "] = { char = "☐", hl_group = "ObsidianTodo" },
-        -- ["x"] = { char = "✔", hl_group = "ObsidianDone" },
+        ["x"] = { char = "✔", hl_group = "ObsidianDone" },
       },
 
       completion = {

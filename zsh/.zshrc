@@ -64,6 +64,8 @@ alias pwdy="echo $(pwd) | wl-copy -p"
 alias view="yazi "
 alias lg="lazygit"
 alias rg="sh search.sh"
+#obsidian
+alias oo='cd /mnt/drive2/obsidian-notes'
 
 # Custom dir alias
 alias clones="cd ~/Downloads/clones"
@@ -81,7 +83,7 @@ alias fzf='fzf --preview="bat --color=always {}"'
 
 alias fcodes='fzf --walker=,dir --walker-root=$HOME/Codes/'
 alias codes='cd $(fcodes)'
-alias vim='nvim '
+alias v='nvim '
 
 # Disabled
 # alias twd='alacritty --working-directory=$(pwd) & exit'
@@ -112,7 +114,6 @@ alias server="npm run dev"
 
 # Custom Scripts
 alias sol="~/.local/share/bin/search-on-yt.sh"
-alias cpro="sh ~/.local/share/bin/competetive-programming.sh "
 
 # Machin Learning
 alias activate="source $HOME/.venv/bin/activate"

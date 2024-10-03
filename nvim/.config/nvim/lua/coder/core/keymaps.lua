@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+
 local opts = { noremap = true, silent = true }
 local map = vim.keymap.set
 -- Keybinds
@@ -71,7 +72,7 @@ map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 map({ "n", "v" }, ";y", [["+y]])
 map({ "n", "v" }, ";d", [["+d]])
 map({ "n", "v" }, "<leader>d", [["_d]])
-map({ "n", "v" }, "<leader>p", [["_p]])
+map("x", "<leader>p", [["_dP]])
 
 -- Resize window using <ctrl> arrow keys
 map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
@@ -136,3 +137,13 @@ map("n", ";e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 
 -- toggle buffer
 map("n", ";n", ":bnext <CR>")
+map("n", "<leader>on", ":ObsidianTemplate note<cr> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>")
+map("n", "<leader>odt", ":ObsidianTemplate task<cr> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>")
+map("n", "<leader>ot", ":ObsidianTemplate title<cr>")
+-- strip date from note title and replace dashes with spaces
+-- must have cursor on title
+map("n", "<leader>of", ":s/\\(# \\)[^_]*_/\\1/ | s/-/ /g<cr>")
+--
+-- search for files in full vault
+map("n", "<leader>os", ':Telescope find_files search_dirs={"/mnt/drive2/obsidian-notes"}<cr>')
+map("n", "<leader>oz", ':Telescope live_grep search_dirs={"/mnt/drive2/obsidian-notes"}<cr>')

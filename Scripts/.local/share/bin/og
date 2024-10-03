@@ -1,9 +1,9 @@
 #!/bin/zsh
 
 # Directory containing markdown files
-VAULT_DIR="$HOME/Documents/Obsidian-Notes/"
-SOURCE_DIR="inbox"
-DEST_DIR="notes"
+VAULT_DIR="/mnt/drive2/obsidian-notes"
+SOURCE_DIR="00_Inbox"
+DEST_DIR="03_Notes"
 
 
 # Iterate through all markdown files in the source directory

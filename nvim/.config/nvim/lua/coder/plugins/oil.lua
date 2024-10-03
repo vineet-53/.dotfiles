@@ -1,5 +1,6 @@
 return {
   "stevearc/oil.nvim",
+  enabled = false,
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     local oil = require("oil")
@@ -29,7 +30,7 @@ return {
         ["q"] = "actions.close",
       },
     })
-    vim.keymap.set("n", "<leader>e", oil.toggle_float, { desc = "toggle oil" }, { silent = true })
+    vim.keymap.set("n", "<leader>[", oil.toggle_float, { desc = "toggle oil" }, { silent = true })
     vim.keymap.set("n", "t", oil.select, { desc = "select option" }, { silent = true })
   end,
 }

@@ -3,7 +3,7 @@
 # xdg-open "$URL"
 # URL="https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems/"
 # xdg-open "$URL"
-URL="https://neetcode.io/practice"
+URL="https://www.tle-eliminators.com/cp-sheet"
 xdg-open "$URL"
 
 cd ~/Codes/cp
@@ -17,8 +17,8 @@ else
     tmux split-window -h
     tmux resize-pane -R 20
     # open the files
-    tmux send-keys -t 0 'vim main.cpp' C-m
-    tmux send-keys -t 1 'vim input.txt' C-m
+    tmux send-keys -t 0 'nvim main.cpp' C-m
+    tmux send-keys -t 1 'nvim input.txt' C-m
     # select the main pane
     tmux select-pane -t 0
     # Attach to the created session

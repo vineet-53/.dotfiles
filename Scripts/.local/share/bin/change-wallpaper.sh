@@ -1,7 +1,7 @@
 #!/bin/bash
 # Set the path to your wallpapers directory
 # wallpapersDir="$HOME/Pictures/Wallpapers/Slideshow"
-wallpapersDir="$HOME/Pictures/Wallpapers/Wallpapers/cars/"
+wallpapersDir="$HOME/Pictures/Wallpapers/Wallpapers/gruvbox"
 # Get all image files in the directory
 wallpapers=("$wallpapersDir"/*)
 

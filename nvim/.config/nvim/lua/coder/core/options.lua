@@ -22,6 +22,7 @@ opt.ignorecase = true -- ignore case when searching
 opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
 opt.smartindent = true -- if you include mixed case in your search, assumes you want case-sensitive
 opt.incsearch = true
+opt.foldmethod = indent
 
 opt.scrolloff = 10
 opt.updatetime = 50
