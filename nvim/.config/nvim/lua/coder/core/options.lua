@@ -1,6 +1,6 @@
 vim.cmd("let g:netrw_liststyle = 3")
 local opt = vim.opt
--- opt.gcr = ""
+opt.gcr = ""
 
 opt.conceallevel = 0
 opt.number = true
@@ -12,8 +12,7 @@ opt.undofile = true
 opt.rnu = true
 opt.tabstop = 4 -- 2 spaces for tabs (prettier default)
 
-vim.o.tabstop = 4
-opt.shiftwidth = 4 -- 2 spaces for indent width
+opt.shiftwidth = 2 -- 2 spaces for indent width
 opt.expandtab = true -- expand tab to spaces
 opt.wrap = false
 opt.swapfile = false
