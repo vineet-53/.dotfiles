@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh installation.
 ZSH=$HOME/.oh-my-zsh/
-export PATH="/bin:$HOME/.local/share/bin:$HOME/.venv/bin/pip:$HOME/.venv/bin/python:$HOME/anaconda3/bin:$PATH"
+export PATH="/bin:$HOME/.local/share/bin"
 
 # Starship
 eval "$(starship init zsh)"
@@ -48,14 +48,13 @@ alias mkdir='mkdir -p'
 # pokemon-colorscripts --no-title -r 1,3,6
 
 # Custom app alias
-alias cls= "clear"
 alias ml="cd ~/Codes/machine-learning"
 alias zconf="nvim ~/.zshrc"
 alias zcompile="source ~/.zshrc"
 # alias t="tmux "
 alias ta="tmux attach "
 # alias tas="tmux attach-session "
-alias t="sh ~/.local/share/bin/tmux-sessionizer.sh"
+# alias t="sh ~/.local/share/bin/tmux-sessionizer.sh"
 alias setwall="swww img --transition-type=random "
 alias notes="~/Documents/Obsidian-Notes && nvim"
 alias cat="bat -pp"
@@ -72,6 +71,9 @@ alias clones="cd ~/Downloads/clones"
 alias desk="cd ~/Desktop"
 alias temp="cd ~/temp"
 alias nvc='cd $HOME/.config/nvim && nvim'
+alias hvc='cd $HOME/.config/hypr && nvim'
+alias tmux='tmux -u'
+alias t='tmux -u'
 
 # Custom Fuzzy finder
 # alias inv="fzf --delimiter=' ' | nvim -f -"
@@ -167,3 +169,4 @@ function in {
 }
 
 
+source /home/coder/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

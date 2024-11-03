@@ -1,52 +1,135 @@
 {
-  "position": "bottom",
-  "modules-left": ["hyprland/workspaces"],
+  "position": "top",
+  "mod": "dock",
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  "height": 20,
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "hyprland/window",
+  ],
   "modules-right": [
-    "idle_inhibitor",
-    "custom/updater",
-    "disk",
-    "backlight",
-    "custom/pomodoro",
+    "cpu",
     "network",
     "pulseaudio#microphone",
     "pulseaudio",
     "battery",
+    "backlight",
     "clock",
   ],
-  "idle_inhibitor": {
+  "hyprland/window": {
+    "format": "{}",
+    "separate-outputs": true,
+    "rewrite": {
+      // desktop
+      "": "<span foreground='#89b4fa'> </span> Hyprland",
+      // terminal
+      "sejjy@archlinux:(.*)": "  $1",
+      "(.*)sejjy@archlinux:~": "  sejjy@archlinux",
+      // Firefox
+      "(.*) — Mozilla Firefox": "<span foreground='#f38ba8'>󰈹 </span> $1",
+      "(.*)Mozilla Firefox": "<span foreground='#f38ba8'>󰈹 </span> Firefox",
+      // VSCode
+      "(.*) - Visual Studio Code": "<span foreground='#89b4fa'>󰨞 </span> $1",
+      "(.*)Visual Studio Code": "<span foreground='#89b4fa'>󰨞 </span> Visual Studio Code",
+      // Spotify
+      "(.*)Spotify": "<span foreground='#a6e3a1'> </span> Spotify",
+      "(.*)Spotify Premium": "<span foreground='#a6e3a1'> </span> Spotify Premium",
+      // Discord
+      "vesktop": "<span foreground='#89b4fa'> </span> Discord",
+      "• Discord(.*)": "Discord$1",
+      "(.*)Discord(.*)": "<span foreground='#89b4fa'> </span> $1Discord$2",
+      // OBS Studio
+      "OBS(.*)": "<span foreground='#a6adc8'>󰐌 </span> OBS Studio",
+      // VLC Media Player
+      "VLC media player": "<span foreground='#fab387'>󰕼 </span> VLC Media Player",
+      "(.*) - VLC media player": "<span foreground='#fab387'>󰕼 </span> $1",
+      // GIMP
+      "GNU Image Manipulation Program": "<span foreground='#a6adc8'> </span> GNU Image Manipulation Program",
+      // Godot
+      "Godot": "<span foreground='#89b4fa'> </span> Godot Engine",
+      "Godot Engine - (.*)": "<span foreground='#89b4fa'> </span> $1",
+      "(.*) - Godot Engine": "<span foreground='#89b4fa'> </span> $1",
+      // OnlyOffice
+      "ONLYOFFICE Desktop Editors": "<span foreground='#f38ba8'> </span> OnlyOffice Desktop",
+      "(.*).docx": "<span foreground='#89b4fa'> </span> $1.docx",
+      "(.*).xlsx": "<span foreground='#a6e3a1'> </span> $1.xlsx",
+      "(.*).pptx": "<span foreground='#fab387'> </span> $1.pptx",
+      "(.*).pdf": "<span foreground='#f38ba8'> </span> $1.pdf",
+      // file manager
+      "/": "  File Manager",
+      // qView
+      "qView": "  qView",
+      "(.*).jpg": "  $1.jpg",
+      "(.*).png": "  $1.png",
+      "(.*).svg": "  $1.svg",
+      // Timeshift
+      "Timeshift-gtk": "<span foreground='#a6e3a1'> </span> Timeshift",
+      // security
+      "Authenticate": "  Authenticate"
+    },
+    "min-length": 5,
+    "max-length": 45
+  },
+  "hyprland/workspaces": {
+    "disable-scroll": true,
     "format": "{icon}",
     "format-icons": {
-      "activated": " ",
-      "deactivated": " "
-    }
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10"
+    },
+    "all-outputs": true,
+    "on-click": "activate"
   },
-  //"clock": {
-  //  "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %H:%M}",
-  //  "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-  //},
-  "clock": {
-    "format": "<span foreground='#ffcc66'>󰥔  </span>{:%a, %H:%M}",
-    "format-alt": "  {:%Y, %d %B}",
-    "tooltip-format": " <tt><small>{calendar}</small></tt> ",
+  "tray": {
+    "icon-size": 18,
+    "spacing": 10
+  },
+  "cpu": {
     "interval": 1,
-    "calendar": {
-      "mode"          : "year",
-      "mode-mon-col"  : 3,
-      "weeks-pos"     : "right",
-      "on-scroll"     : 1,
-      "format": {
-        "months":     "<span color='#ffead3'><b>{}</b></span>",
-        "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-        "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
-        "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-        "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
-      }
-    }
+    "format": "  {}%"
   },
-
+  "memory": {
+    "interval": 1,
+    "format": "  {}%"
+  },
+  "clock": {
+    "format": "   {:%H:%M }",
+    "format-alt": "  {:%a, %b %e }",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "backlight": {
+    "interval": 2,
+    "align": 0,
+    "rotate": 0,
+    "format": "<span foreground='#ffead3'>{icon}  </span>{percent}%",
+    "format-icons": [
+      "󰃞",
+      "󰃟",
+      "󰃠"
+    ],
+    "icon-size": 10,
+    "on-click": "brightnessctl set 100%",
+    "on-click-middle": "brightnessctl set 50%",
+    "on-click-right": "brightnessctl set 20%",
+    "on-scroll-up": "~/.local/share/bin/brightness.sh --inc",
+    "on-scroll-down": "~/.local/share/bin/brightness.sh --dec",
+    "smooth-scrolling-threshold": 1,
+  },
   "battery": {
     "states": {
-      "good" : 75,
+      "good": 75,
       "warning": 30,
       "critical": 15,
     },
@@ -57,45 +140,21 @@
     "format-plugged": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
     "format-alt": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {time}",
     "format-full": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-    "format-icons": ["", "", "", "", "", "", "", "", "", "", ""],
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
     "tooltip-format": "{time}",
   },
-
-  "network": {
-    "on-click": "sh ~/.local/share/bin/wifimenu.sh",
-    "format-wifi": "<span size='10000' foreground='#f5e0dc'>  </span>{essid}",
-    "format-ethernet": "<span size='13000' foreground='#f5e0dc'>󰤭  </span> Disconnected",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "<span size='13000' foreground='#f5e0dc'>  </span>Disconnected",
-    "tooltip-format-wifi": "Signal Strenght: {signalStrength}%",
-  },
-
-  //"network": {
-  //  "on-click": "sh ~/.local/share/bin/wifimenu.sh",
-  //  "format": "{ifname}",
-  //  "format-wifi": "󰤨   {essid}",
-  //  "format-ethernet": "󰈁  Wired",
-  //  "format-disconnected": "", //An empty format will hide the module.
-  //  "tooltip-format": " {ipaddr}  {bandwidthUpBytes}  {bandwidthDownBytes} ",
-  //  "format-linked": "󰈁 {ifname} (No IP)",
-  //  "tooltip-format-wifi": " {essid} ({signalStrength}%)   -  {bandwidthDownBytes}  {bandwidthUpBytes}",
-  //  "tooltip-format-ethernet": " {ifname} 󰈁 ",
-  //  "tooltip-format-disconnected": " 󰈂 Disconnected ",
-  //  "max-length": 36,
-  //},
-
-
-  "memory": {
-    "interval": 10,
-    "format": " {used:0.01f}G",
-    "format-alt": " {percentage}%",
-    "format-alt-click": "click",
-    "tooltip": true,
-    "tooltip-format": " {used:0.1f}GB/{total:0.1f}G ",
-    "on-click-right": "alacritty --title btop sh -c 'btop'"
-  },
-
-
   "pulseaudio": {
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "format": "<span size='13000' foreground='#89b4fa'>{icon} </span> {volume}%",
@@ -107,21 +166,12 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["", ""],
+      "default": [
+        "",
+        ""
+      ],
     },
   },
-  "custom/pomodoro": {
-    "format": "<span size='12000' foreground='#fab387'> {}  {icon}</span>",
-    "return-type": "json",
-    "format-icons": {
-      "work": "󰔟",
-      "break": "",
-    },
-    "exec": "waybar-module-pomodoro -w 5",
-    "on-click": "waybar-module-pomodoro toggle",
-    "on-click-right": "waybar-module-pomodoro reset",
-  },
-
   "pulseaudio#microphone": {
     "format": "{format_source}",
     "format-source": "   {volume}%",
@@ -132,46 +182,89 @@
     "on-scroll-down": "pamixer --default-source -d 5",
     "scroll-step": 5,
   },
-
-
-  "tray": {
-    "icon-size": 17,
-    "spacing": 7,
+  "network": {
+    "on-click": "sh ~/.local/share/bin/wifimenu.sh",
+    "format-wifi": "<span size='10000' foreground='#f5e0dc'>  </span>{essid}",
+    "format-ethernet": "<span size='13000' foreground='#f5e0dc'>󰤭  </span> Disconnected",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "<span size='13000' foreground='#f5e0dc'>  </span>Disconnected",
+    "tooltip-format-wifi": "Signal Strenght: {signalStrength}%",
   },
-  "backlight": {
-    "interval": 2,
-    "align": 0,
-    "rotate": 0,
-    "format": "<span foreground='#ffead3'>{icon}  </span>{percent}%",
-    "format-icons": ["󰃞", "󰃟", "󰃠"],
-    "icon-size": 10,
-    "on-click": "brightnessctl set 100%",
-    "on-click-middle": "brightnessctl set 50%",
-    "on-click-right": "brightnessctl set 20%",
-    "on-scroll-up": "~/.local/share/bin/brightness.sh --inc",
-    "on-scroll-down": "~/.local/share/bin/brightness.sh --dec",
-    "smooth-scrolling-threshold": 1,
-  },
-
-  "custom/updater":{
-    "format": "  {}",
-    "exec": "~/.local/share/bin/checkforupdates",
-    "exec-if": "[[ $(checkupdates | wc -l) ]]", "interval": 15, "on-click": "alacritty -T update paru -Syu || yay -Syu && notify-send 'The system has been updated'", "on-click-right": "~/.config/hypr/scripts/WallpaperSwitch.sh",
+  "bluetooth": {
+    "format": " {status}",
+    "format-disabled": "", // an empty format will hide the module
+    "format-connected": " {num_connections}",
+    "tooltip-format": "{device_alias}",
+    "tooltip-format-connected": " {device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}"
   },
   "mpris": {
-    "format": "{player_icon} {title} : {artist}",
-    "format-paused": "{player_icon} {title} : {artist} - {status_icon}",
+    "title-len": 40,
+    "interval": 1,
+    "album-len": 0,
+    "max-len": 60,
+    "format": "{player_icon} {artist} - {title}",
+    "format-paused": "{player_icon} {artist} - {title}",
     "player-icons": {
       "default": "▶",
       "mpv": "🎵",
-      "spotify": "",
+      "spotify": " ",
+      "firefox": "",
     },
     "status-icons": {
-      "paused": " "
+      "paused": ""
     },
-        // "ignored-players": ["firefox"]
+    "ignored-players": [
+      "vlc",
+      "firefox",
+      "brave"
+    ]
   },
-
+  "mpd": {
+    "format": "{stateIcon} {artist} - {title}",
+    "format-disconnected": "Disconnected ",
+    "format-stopped": "{stateIcon} {artist} - {title}",
+    "interval": 2,
+    "consume-icons": {
+      "on": " " // Icon shows only when "consume" is on
+    },
+    "repeat-icons": {
+      "on": " "
+    },
+    "single-icons": {
+      "on": " 1 "
+    },
+    "state-icons": {
+      "paused": " ",
+      "playing": " "
+    },
+    "tooltip-format": "MPD (connected)",
+    "tooltip-format-disconnected": "MPD (disconnected)"
+  },
+  "custom/network": {
+    "on-click": "sh ~/.local/share/bin/wifimenu.sh",
+    "format-wifi": "<span size='10000' foreground='#f5e0dc'>  </span>{essid}",
+    "format-ethernet": "<span size='13000' foreground='#f5e0dc'>󰤭  </span> Disconnected",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "<span size='13000' foreground='#f5e0dc'>  </span>Disconnected",
+    "tooltip-format-wifi": "Signal Strenght: {signalStrength}%",
+  },
+  "custom/pacman": {
+    "format": "  {}",
+    "interval": 100,
+    "exec": "~/.local/scripts/checkupdate",
+    "exec-if": "exit 0",
+    "on-click": "alacritty -e paru"
+  },
+  "custom/pomodoro": {
+    "exec": "i3-gnome-pomodoro status --format=waybar --show-seconds | awk '{gsub(/Pomodoro /,\"\")}1'",
+    "return-type": "json",
+    "interval": 1,
+    "format": " {}",
+    "on-click": "i3-gnome-pomodoro toggle",
+    "on-middle-click": "i3-gnome-pomodoro stop",
+    "on-right-click": "i3-gnome-pomodoro start-stop"
+  },
   "custom/notification": {
     "tooltip": false,
     "format": "{icon}",
@@ -191,12 +284,4 @@
     "on-click-right": "sleep 0.1 && swaync-client -d -sw",
     "escape": true
   },
-  "disk": {
-    "format": "󰋊 {percentage_used}%",
-  },
-
-
-
-
-
 }

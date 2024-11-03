@@ -1,5 +1,6 @@
 return {
   "epwalsh/obsidian.nvim",
+  enabled = false,
   config = function()
     require("obsidian").setup({
       workspaces = {
