@@ -1,6 +1,6 @@
 vim.cmd("let g:netrw_liststyle = 3")
 local opt = vim.opt
-opt.gcr = ""
+-- opt.gcr = ""
 
 opt.conceallevel = 0
 opt.number = true

@@ -35,7 +35,7 @@ return {
         "jdtls",
         "clangd",
         "sqlls",
-        "pylsp",
+        -- "pylsp",
       },
     })
 
@@ -44,9 +44,9 @@ return {
         "prettier", -- prettier formatter
         -- "gopls",
         "stylua", -- lua formatter
-        "isort", -- python formatter
-        "black", -- python formatter
-        "pylint",
+        -- "isort", -- python formatter
+        -- "black", -- python formatter
+        -- "pylint",
         "eslint_d",
       },
     })

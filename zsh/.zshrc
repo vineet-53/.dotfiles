@@ -1,14 +1,15 @@
 # Path to your oh-my-zsh installation.
-ZSH=$HOME/.oh-my-zsh/
-export PATH="/bin:$HOME/.local/share/bin"
+ZSH=$HOME/.oh-my-zsh
+export PATH="/bin:$HOME/.local/share/bin:/usr/local/bin/nvim-linux64/bin"
 
 # Starship
-eval "$(starship init zsh)"
-# ZSH_THEME="robbyrussell"
+ZSH_THEME="robbyrussell"
 
 
 # List Plugins
 plugins=(git history encode64 copypath zsh-autosuggestions zsh-syntax-highlighting web-search)
+
+#plugins=(git history encode64 copypath  web-search)
 
 # sources
 source $ZSH/oh-my-zsh.sh
@@ -51,13 +52,14 @@ alias mkdir='mkdir -p'
 alias ml="cd ~/Codes/machine-learning"
 alias zconf="nvim ~/.zshrc"
 alias zcompile="source ~/.zshrc"
+
 # alias t="tmux "
 alias ta="tmux attach "
 # alias tas="tmux attach-session "
 # alias t="sh ~/.local/share/bin/tmux-sessionizer.sh"
 alias setwall="swww img --transition-type=random "
 alias notes="~/Documents/Obsidian-Notes && nvim"
-alias cat="bat -pp"
+#alias cat="bat -pp"
 # alias leet="nvim leetcode.nvim"
 alias pwdy="echo $(pwd) | wl-copy -p"
 alias view="yazi "
@@ -85,7 +87,7 @@ alias fzf='fzf --preview="bat --color=always {}"'
 
 alias fcodes='fzf --walker=,dir --walker-root=$HOME/Codes/'
 alias codes='cd $(fcodes)'
-alias v='nvim '
+alias vim='nvim '
 
 # Disabled
 # alias twd='alacritty --working-directory=$(pwd) & exit'
@@ -95,10 +97,10 @@ alias v='nvim '
 # alias vc='code' # gui code editor
 
 # Drives
-alias d="cd /mnt/drive"
-alias e="cd /mnt/drive2"
-alias hdd="cd /mnt/hdd"
-alias window="cd /mnt/windows"
+alias d="cd /mnt/d"
+alias c="cd /mnt/c"
+alias e="cd /mnt/e"
+# alias hdd="cd /mnt/hdd"
 
 # Custom Courses Video Play
 alias vid="cd /mnt/drive2/Telegram/0-100Cohort/0-100Cohort"
@@ -119,7 +121,7 @@ alias sol="~/.local/share/bin/search-on-yt.sh"
 
 # Machin Learning
 alias activate="source $HOME/.venv/bin/activate"
-alias postman="~/Downloads/postman-linux-x64/Postman/Postman"
+alias postman="~/Postman/Postman"
 
 # Python
 alias piv="~/.venv/bin/pip "
