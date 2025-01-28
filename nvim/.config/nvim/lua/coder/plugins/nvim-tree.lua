@@ -1,81 +1,56 @@
-local function my_attach()
-  local status_ok, nvim_tree = pcall(require, "nvim-tree")
-  if not status_ok then
-    return
-  end
-
-  local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
-  if not config_status_ok then
-    return
-  end
-
-  local tree_cb = nvim_tree_config.nvim_tree_callback
-
-  nvim_tree.setup({
-    actions = {
-      open_file = {
-        quit_on_open = true,
-      },
-    },
-    sort = {
-      sorter = "case_sensitive",
-    },
-    view = {
-      width = 30,
-      relativenumber = true,
-    },
-    renderer = {
-      group_empty = true,
-    },
-    filters = {
-      dotfiles = true,
-      custom = {
-        "node_modules/.*",
-      },
-    },
-    log = {
-      enable = true,
-      truncate = true,
-      types = {
-        diagnostics = true,
-        git = true,
-        profile = true,
-        watcher = true,
-      },
-    },
-  })
-end
-
 return {
   "nvim-tree/nvim-tree.lua",
-  enabled = true,
-  dependencies = {
-    "nvim-tree/nvim-tree.lua",
-    "nvim-tree/nvim-web-devicons",
-  },
+  dependencies = "nvim-tree/nvim-web-devicons",
   config = function()
-    require("nvim-tree").setup({
-      on_attach = my_attach(),
-    })
-    vim.g.nvim_tree_icons = {
-      default = "",
-      symlink = "",
+    local nvimtree = require("nvim-tree")
+
+    -- recommended settings from nvim-tree documentation
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
+
+    nvimtree.setup({
+      update_focused_file = {
+        enable = true,
+      },
+      view = {
+        width = 35,
+        relativenumber = true,
+      },
+      -- change folder arrow icons
+      renderer = {
+        indent_markers = {
+          enable = true,
+        },
+        icons = {
+          glyphs = {
+            folder = {
+              arrow_closed = "", -- arrow when folder is closed
+              arrow_open = "", -- arrow when folder is open
+            },
+          },
+        },
+      },
+      -- disable window_picker for
+      -- explorer to work well with
+      -- window splits
+      actions = {
+        open_file = {
+          window_picker = {
+            enable = false,
+          },
+        },
+      },
+      filters = {
+        custom = { ".DS_Store" },
+      },
       git = {
-        unstaged = "",
-        staged = "S",
-        unmerged = "",
-        renamed = "➜",
-        deleted = "",
-        untracked = "U",
-        ignored = "◌",
+        ignore = false,
       },
-      folder = {
-        default = "",
-        open = "",
-        empty = "",
-        empty_open = "",
-        symlink = "",
-      },
-    }
+    })
+
+    -- set keymaps
+    local keymap = vim.keymap -- for conciseness
+
+    keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
   end,
 }

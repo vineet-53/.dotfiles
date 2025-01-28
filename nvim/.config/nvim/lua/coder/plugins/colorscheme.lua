@@ -2,7 +2,6 @@ return {
   {
     "rose-pine/neovim",
     name = "rose-pine",
-    enabled = false,
     config = function()
       require("rose-pine").setup({
         styles = {
@@ -26,6 +25,7 @@ return {
   },
   {
     "catppuccin/nvim",
+    enabled = false,
     name = "catppuccin",
     priority = 1000,
     config = function()
