@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh installation.
 ZSH=$HOME/.oh-my-zsh
-export PATH="/bin:$HOME/.local/share/bin:/usr/local/bin/nvim-linux64/bin"
+export PATH="/bin:$HOME/.local/share/bin:/usr/local/bin/nvim-linux64/bin:/usr/share/bin:/usr/sbin"
 
 # Starship
 ZSH_THEME="robbyrussell"
