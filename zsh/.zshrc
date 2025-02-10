@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh installation.
 ZSH=$HOME/.oh-my-zsh
-export PATH="/bin:$HOME/.local/share/bin:/usr/local/bin/nvim-linux64/bin:/usr/share/bin:/usr/sbin"
+export PATH="/bin:$HOME/.local/share/bin:/usr/local/bin/nvim-linux64/bin:/usr/sbin:$HOME/.local/bin"
 
 # Starship
 ZSH_THEME="robbyrussell"
@@ -49,9 +49,9 @@ alias mkdir='mkdir -p'
 # pokemon-colorscripts --no-title -r 1,3,6
 
 # Custom app alias
-alias ml="cd ~/Codes/machine-learning"
-alias zconf="nvim ~/.zshrc"
-alias zcompile="source ~/.zshrc"
+alias ml="cd /mnt/d/codes/machine-learning"
+alias zc="nvim ~/.zshrc"
+alias zs="source ~/.zshrc"
 
 # alias t="tmux "
 alias ta="tmux attach "
@@ -60,20 +60,21 @@ alias ta="tmux attach "
 alias setwall="swww img --transition-type=random "
 alias notes="~/Documents/Obsidian-Notes && nvim"
 #alias cat="bat -pp"
-# alias leet="nvim leetcode.nvim"
+alias lc="nvim leetcode.nvim"
 alias pwdy="echo $(pwd) | wl-copy -p"
 alias view="yazi "
 alias lg="lazygit"
+alias ld="lazydocker"
 alias rg="sh search.sh"
 #obsidian
-alias oo='cd /mnt/drive2/obsidian-notes'
+alias oo='cd /mnt/e/obsidian-notes/ && vim '
 
 # Custom dir alias
 alias clones="cd ~/Downloads/clones"
 alias desk="cd ~/Desktop"
 alias temp="cd ~/temp"
 alias nvc='cd $HOME/.config/nvim && nvim'
-alias hvc='cd $HOME/.config/hypr && nvim'
+alias ic='cd $HOME/.config/i3 && nvim'
 alias tmux='tmux -u'
 alias t='tmux -u'
 
@@ -85,8 +86,8 @@ alias gd='cd $(fd)'
 alias fzf='fzf --preview="bat --color=always {}"'
 # alias froot='fzf --walker=,dir --walker-root=/ --walker-skip=/home'
 
-alias fcodes='fzf --walker=,dir --walker-root=$HOME/Codes/'
-alias codes='cd $(fcodes)'
+# alias fcodes='fzf --walker=,dir --walker-root=/mnt/d/codes/'
+alias codes='cd /mnt/d/codes/'
 alias vim='nvim '
 
 # Disabled
