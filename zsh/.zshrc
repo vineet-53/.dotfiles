@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh installation.
 ZSH=$HOME/.oh-my-zsh
-export PATH="/bin:$HOME/.local/share/bin:/usr/local/bin/nvim-linux64/bin:/usr/sbin:$HOME/.local/bin"
+export PATH="/usr/bin:/bin:$HOME/.local/share/bin:/usr/local/bin/nvim-linux64/bin:/usr/sbin:$HOME/.local/bin:$HOME/go/bin"
 
 # Starship
 ZSH_THEME="robbyrussell"
@@ -23,8 +23,8 @@ bindkey -s ^o "competetive-programming.sh\n"
 # Helpful aliases
 alias tt='yazi ~/Pictures/timetable.png'
 alias  c='clear' # clear terminal
-alias  l='eza -lh  --icons=auto' # long list
-alias ls='eza -1 --icons=always' # short list
+alias  ls='eza -lh  --icons=auto' # long list
+alias l='eza -1 --icons=always' # short list
 alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
 alias ld='eza -lhD --icons=auto' # long list dirs
 alias lt='eza --icons=auto --tree' # list folder as tree
@@ -59,11 +59,12 @@ alias ta="tmux attach "
 # alias t="sh ~/.local/share/bin/tmux-sessionizer.sh"
 alias setwall="swww img --transition-type=random "
 alias notes="~/Documents/Obsidian-Notes && nvim"
-#alias cat="bat -pp"
+alias cat="batcat -pp"
 alias lc="nvim leetcode.nvim"
 alias pwdy="echo $(pwd) | wl-copy -p"
 alias view="yazi "
 alias lg="lazygit"
+alias docker-compose="$HOME/.docker/cli-plugins/docker-compose"
 alias ld="lazydocker"
 alias rg="sh search.sh"
 #obsidian
@@ -80,15 +81,14 @@ alias t='tmux -u'
 
 # Custom Fuzzy finder
 # alias inv="fzf --delimiter=' ' | nvim -f -"
-# alias ff='fzf --preview="bat --color=always {}"'
+# alias ff='fzf --preview="batcat --color=always {}"'
 alias fd="find ~ -type d -not -path '*/.*/*' -not -path '*/.*' -not -path '*/node_modules/*' -not -path '*/node_modules' -not -path '*/.git/*' -not -path '*/.git' | fzf"
 alias gd='cd $(fd)'
-alias fzf='fzf --preview="bat --color=always {}"'
+alias fzf='fzf --preview="batcat --color=always {}"'
 # alias froot='fzf --walker=,dir --walker-root=/ --walker-skip=/home'
 
 # alias fcodes='fzf --walker=,dir --walker-root=/mnt/d/codes/'
 alias codes='cd /mnt/d/codes/'
-alias vim='nvim '
 
 # Disabled
 # alias twd='alacritty --working-directory=$(pwd) & exit'

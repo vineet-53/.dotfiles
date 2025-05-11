@@ -1,2 +1,2 @@
-./edp-on.sh
+#!/bin/zsh
 xrandr --output HDMI-1-0 --off

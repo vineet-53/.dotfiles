@@ -10,7 +10,7 @@ font pango:JetBrainsMono Nerd Font Mono
 assign [class="firefox"] 1
 assign [class="google*"] 1
 assign [class="rnote"] 2
-assign [class="kitty"] 3
+assign [class="ghostty"] 3
 assign [class="Postman"] 4
 assign [class="thunderbird"] 8
 assign [class="whatsapp"] 9
@@ -27,14 +27,14 @@ assign [class="Xournalpp"] 8
 exec --no-startup-id firefox
 exec --no-startup-id calendar
 # exec --no-startup-id spotify
-# exec --no-startup-id kitty
+# exec --no-startup-id ghostty
 # exec --no-startup-id rnote
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec ghostty
 
 # kill focused window
 bindsym $mod+q kill
@@ -42,7 +42,7 @@ bindsym $mod+q kill
 # auto start
 exec --no-startup-id picom
 exec --no-startup-id feh --bg-scale ~/Downloads/mac-os-night.jpg
-exec --no-startup-id xrandr --output eDP-1 --scale 1.25x1.25
+exec --no-startup-id xrandr --output eDP-1 --scale 1
 exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id nm-applet
 exec_always --no-startup-id setxkbmap -option ctrl:nocaps
@@ -52,9 +52,9 @@ bindsym Print exec maim "/home/$USER/Pictures/$(date).jpg"
 bindsym $mod+Print exec maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date).jpg"
 bindsym Shift+$mod+s exec maim --select "/home/$USER/Pictures/$(date).jpg"
 
-bindsym Ctrl+Shift+1 exec $HOME/.config/i3/display/edp-on.sh
-bindsym Ctrl+Shift+2 exec $HOME/.config/i3/display/hdmi-on.sh
-bindsym Ctrl+Shift+3 exec $HOME/.config/i3/display/extend-screen.sh
+bindsym Ctrl+Shift+$mod+1 exec $HOME/.config/i3/display/hdmi-off.sh && $HOME/.config/i3/display/edp-on.sh
+bindsym Ctrl+Shift+$mod+2 exec $HOME/.config/i3/display/edp-on.sh && $HOME/.config/i3/display/extend-screen.sh
+bindsym Ctrl+Shift+$mod+3 exec $HOME/.config/i3/display/edp-off.sh && $HOME/.config/i3/display/hdmi-on.sh
 
 # screenshots
 bindsym Ctrl+Print exec maim | xclip -selection clipboard -t image/png
