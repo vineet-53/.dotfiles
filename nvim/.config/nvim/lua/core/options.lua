@@ -1,3 +1,4 @@
+-- options 
 vim.cmd("let g:netrw_liststyle = 3")
 
 local opt = vim.opt
@@ -6,7 +7,7 @@ local opt = vim.opt
 opt.conceallevel = 0
 opt.background = "dark"
 opt.number = true
-vim.o.undodir = "/home/coder/.undodir"
+vim.o.undodir = "/home/vscoder/.undodir"
 opt.undofile = true
 
 -- tabs & indentation
@@ -49,3 +50,6 @@ vim.diagnostic.config({
 	underline = true,
 	update_in_insert = false,
 })
+
+
+

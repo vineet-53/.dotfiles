@@ -172,4 +172,3 @@ function in {
 }
 
 
-source /home/coder/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

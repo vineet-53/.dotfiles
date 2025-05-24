@@ -1,16 +1,39 @@
-return {
+return { 
+  { 
+    "nvim-treesitter/nvim-treesitter",
+  },
+  { 
+    "stevearc/dressing.nvim",
+  },
+  { 
+    "MunifTanjim/nui.nvim",
+  },
+  --- The below dependencies are optional,
+  { 
+    "echasnovski/mini.pick", -- for file_selector provider mini.pick
+  },
+  { 
+    "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+  },
+  { 
+    "ibhagwan/fzf-lua", -- for file_selector provider fzf
+  },
+  { 
+    "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+  },
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    opts = {
+      file_types = { "markdown", "Avante" },
+    },
+    ft = { "markdown", "Avante" },
+  },
+  {
 	"nvim-telescope/telescope.nvim",
 	event = "VimEnter",
 	branch = "0.1.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		{
-			"nvim-telescope/telescope-fzf-native.nvim",
-			build = "make",
-			cond = function()
-				return vim.fn.executable("make") == 1
-			end,
-		},
 		{ "nvim-telescope/telescope-ui-select.nvim" },
 		{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 	},
@@ -76,4 +99,5 @@ return {
 			})
 		end, { desc = "[S]earch [/] in Open Files" })
 	end,
+}
 }
