@@ -171,4 +171,5 @@ function in {
     fi
 }
 
+export COLORTERM=truecolor
 

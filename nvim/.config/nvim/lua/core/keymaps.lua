@@ -122,15 +122,7 @@ map("v", "<", "<gv", opts)
 map("v", ">", ">gv", opts)
 
 -- cpp compile commands
--- map("n", "<F5>", ":w <bar> !clear && g++ %:r.cpp -o %:r.exe<CR> <bar> :!./%:r.exe<CR>", opts)
-map(
-	"n",
-	",r",
-	":silent! w <bar> :silent! !g++ %:r.cpp -o %:r.exe <CR> <bar> :!./%:r.exe <CR> <bar> <CR> <bar> :echo 'compiled success' <CR>",
-	{ silent = true }
-)
-map("n", "<F9>", ":silent! w <bar> !clear && g++ %:r.cpp -o %:r.exe <CR>", opts)
-map("n", "<F10>", ":!./%:r.exe<CR>", opts)
+map("n", ",r", ':w<CR>:silent !g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o "%<" "%" && "./%<" < inp > out<CR>', opts)
 
 -- Increment / Decrement
 map("n", "<leader>=", "<C-a>", { desc = "Increment number" }) -- increment

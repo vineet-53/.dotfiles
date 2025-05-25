@@ -3,7 +3,8 @@ vim.cmd("let g:netrw_liststyle = 3")
 
 local opt = vim.opt
 
--- opt.gcr = ""
+opt.termguicolors = true
+opt.gcr = ""
 opt.conceallevel = 0
 opt.background = "dark"
 opt.number = true
@@ -42,7 +43,7 @@ vim.opt.formatoptions:remove({ "c", "r", "o" })
 vim.opt.shortmess:append("c") -- Don't give |ins-completion-menu| messages (default: does not include 'c')
 vim.opt.iskeyword:append("-") -- Hyphenated words recognized by searches (default: does not include '-')
 vim.o.showmode = false -- We don't need to see things like -- INSERT -- anymore (default: true)
-vim.o.hlsearch = false -- Set highlight on search (default: true)
+vim.o.hlsearch = true -- Set highlight on search (default: true)
 vim.o.linebreak = true
 vim.diagnostic.config({
 	virtual_text = true,
