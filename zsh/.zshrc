@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh installation.
 ZSH=$HOME/.oh-my-zsh
-export PATH="/usr/bin:/bin:$HOME/.local/share/bin:/usr/local/bin/nvim-linux64/bin:/usr/sbin:$HOME/.local/bin:$HOME/go/bin"
+export PATH="$HOME/personal/neovim/build/bin:/usr/bin:/bin:$HOME/.local/share/bin:/usr/local/bin/nvim-linux64/bin:/usr/sbin:$HOME/.local/bin:$HOME/go/bin"
 
 # Starship
 ZSH_THEME="robbyrussell"
@@ -59,7 +59,6 @@ alias ta="tmux attach "
 # alias t="sh ~/.local/share/bin/tmux-sessionizer.sh"
 alias setwall="swww img --transition-type=random "
 alias notes="~/Documents/Obsidian-Notes && nvim"
-alias cat="batcat -pp"
 alias lc="nvim leetcode.nvim"
 alias pwdy="echo $(pwd) | wl-copy -p"
 alias view="yazi "
@@ -173,3 +172,5 @@ function in {
 
 export COLORTERM=truecolor
 
+alias i="sudo apt install"
+alias vim="nvim "

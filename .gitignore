@@ -1,3 +1,5 @@
 ./i3/.config/i3/patches
 ./i3/.config/i3/patches/*
 ./.icons
+i3/.config/i3/patches/autotiling
+Scripts/.local/share/bin/Telegram

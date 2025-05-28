@@ -1,11 +1,21 @@
-set $mod Mod4
-for_window [class="^.*"] border pixel 2
+set $win Mod4
+set $mod Mod1
+set $terminal kitty 
+set $gmail geary 
+set $menu dmenu_run
+set $files nautilus
+set $browser google-chrome-stable
+for_window [class="^.*"] border pixel 1
 
-default_border pixel 3
+default_border pixel 1
 default_floating_border normal 0
+gaps inner 8 
+gaps outer -3 
+
 for_window [class="vol|ttrm|mus|fm|news"] floating enable, resize set 1400 800, move scratchpad, border pixel 0
 
-font pango:JetBrainsMono Nerd Font Mono
+#font pango:JetBrainsMono Nerd Font Mono
+font pango:Meslo LGM Nerd Font
 
 assign [class="firefox"] 1
 assign [class="google*"] 1
@@ -24,8 +34,8 @@ assign [class="FreeTube"] 7
 assign [class="akregator"] 7
 assign [class="Xournalpp"] 8
 
-exec --no-startup-id firefox
-exec --no-startup-id calendar
+# exec --no-startup-id firefox
+# exec --no-startup-id calendar
 # exec --no-startup-id spotify
 # exec --no-startup-id ghostty
 # exec --no-startup-id rnote
@@ -33,20 +43,28 @@ exec --no-startup-id calendar
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec ghostty
+#i3 lock 
+bindsym $mod+x exec i3lock --show-failed-attempts -i ~/Pictures/wallpapers/keyhole-1920x1080.png
+
+# start a program
+bindsym $mod+Return exec $terminal
+bindsym $win+e  exec $files
+
+# gmail 
+bindsym $mod+g exec $gmail
 
 # kill focused window
 bindsym $mod+q kill
 
 # auto start
-exec --no-startup-id picom
-exec --no-startup-id feh --bg-scale ~/Downloads/mac-os-night.jpg
-exec --no-startup-id xrandr --output eDP-1 --scale 1
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
+exec_always --no-startup-id ~/.xinitrc
 exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id nm-applet
-exec_always --no-startup-id setxkbmap -option ctrl:nocaps
-exec_always --no-startup-id ~/pen.sh
+exec --no-startup-id ~/.config/i3/display/hdmi-on.sh
+exec --no-startup-id copyq
+# exec --no-startup-id setxkbmap -option ctrl:nocaps
+#exec_always --no-startup-id ~/pen.sh
 
 bindsym Print exec maim "/home/$USER/Pictures/$(date).jpg"
 bindsym $mod+Print exec maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date).jpg"
@@ -55,10 +73,6 @@ bindsym Shift+$mod+s exec maim --select "/home/$USER/Pictures/$(date).jpg"
 bindsym Ctrl+Shift+$mod+1 exec $HOME/.config/i3/display/hdmi-off.sh && $HOME/.config/i3/display/edp-on.sh
 bindsym Ctrl+Shift+$mod+2 exec $HOME/.config/i3/display/edp-on.sh && $HOME/.config/i3/display/extend-screen.sh
 bindsym Ctrl+Shift+$mod+3 exec $HOME/.config/i3/display/edp-off.sh && $HOME/.config/i3/display/hdmi-on.sh
-
-# screenshots
-bindsym Ctrl+Print exec maim | xclip -selection clipboard -t image/png
-bindsym Ctrl+$mod+Print exec maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 
 set $refresh_i3status killall -SIGUSR1 i3status
 
@@ -71,10 +85,12 @@ bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 5%+
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%-
 
+#clipboard manager
+bindsym $mod+v exec --no-startup-id copyq toggle
+
+
 # rofi start
-bindsym $mod+space exec --no-startup-id rofi -show drun
-bindsym $mod+d exec --no-startup-id rofi -show combi
-bindsym $mod+Tab exec --no-startup-id rofi -show window
+bindsym $mod+space exec --no-startup-id dmenu_run
 
 # change focus
 bindsym $mod+h focus left
@@ -224,15 +240,28 @@ set $mantle    #181825
 set $crust     #11111b
 
 # target                 title     bg    text      indicator    border
-# client.focused           $mantle   $teal $mantle  $rosewater $teal
-# client.focused_inactive  $overlay0 $base  $text    $rosewater $overlay0
-# client.unfocused         $overlay0 $base  $text    $rosewater $overlay0
-# client.urgent            $peach    $base  $peach   $overlay0  $peach
-# client.placeholder       $overlay0 $base  $text    $overlay0  $overlay0
-# client.background        $base
+client.focused           $mantle   $teal $mantle  $mauve $mauve
+client.focused_inactive  $overlay0 $base  $text    $overlay0 $overlay0
+client.unfocused         $overlay0 $base  $text    $overlay0 $overlay0
+client.urgent            $peach    $base  $peach   $peach  $peach
+client.placeholder       $overlay0 $base  $text    $overlay0  $overlay0
+client.background        $base
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+# bar {
+#         status_command i3status
+# }
+
 bar {
-        status_command i3status
+	status_command i3status  --config ~/.config/i3status/config
+    font pango:Meslo LGM Nerd Font 10
+colors {
+		#                  border             background         text
+		background $base 
+		focused_workspace  $mauve $mauve $mantle
+		inactive_workspace  $overlay0  $overlay0 $text
+	}
+
 }
+
