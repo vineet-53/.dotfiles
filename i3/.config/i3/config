@@ -3,27 +3,32 @@ set $mod Mod1
 set $terminal kitty 
 set $gmail geary 
 set $menu dmenu_run
-set $files nautilus
+set $files thunar
 set $browser google-chrome-stable
 for_window [class="^.*"] border pixel 1
 
 default_border pixel 1
 default_floating_border normal 0
+
 gaps inner 8 
-gaps outer -3 
+gaps outer 1
 
 for_window [class="vol|ttrm|mus|fm|news"] floating enable, resize set 1400 800, move scratchpad, border pixel 0
+
+floating_minimum_size 75 x 50
+floating_maximum_size -1 x -1
 
 #font pango:JetBrainsMono Nerd Font Mono
 font pango:Meslo LGM Nerd Font
 
 assign [class="firefox"] 1
-assign [class="google*"] 1
+assign [class="chrome"] 1
 assign [class="rnote"] 2
 assign [class="ghostty"] 3
 assign [class="Postman"] 4
 assign [class="thunderbird"] 8
-assign [class="whatsapp"] 9
+assign [class="geary"] 8
+assign [class="whatsapp-linux-desktop"] 9
 
 assign [class="LibreWolf"] 2
 assign [class="Brave-browser"] 2
@@ -36,9 +41,10 @@ assign [class="Xournalpp"] 8
 
 # exec --no-startup-id firefox
 # exec --no-startup-id calendar
-# exec --no-startup-id spotify
-# exec --no-startup-id ghostty
-# exec --no-startup-id rnote
+exec --no-startup-id kitty
+exec --no-startup-id google-chrome-stable
+exec --no-startup-id rnote
+exec --no-startup-id geary 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -79,8 +85,6 @@ set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
 bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
-
-
 
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 5%+
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%-
@@ -154,6 +158,10 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+# set $ws1 " 1  "
+# set $ws2 " 2  "
+# set $ws3 " 3  "
+
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
@@ -213,9 +221,11 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 set $rosewater #f5e0dc
+set $bg #2e3440
 set $flamingo  #f2cdcd
 set $pink      #f5c2e7
-set $mauve     #cba6f7
+set $mauve     #a3be8c
+set $mauve-bak     #cba6f7
 set $red       #f38ba8
 set $maroon    #eba0ac
 set $peach     #fab387
@@ -254,13 +264,19 @@ client.background        $base
 # }
 
 bar {
+    position top
 	status_command i3status  --config ~/.config/i3status/config
     font pango:Meslo LGM Nerd Font 10
+    tray_padding 6
+    separator_symbol "|"
+    workspace_min_width 30
+    padding 3px 0
+    
 colors {
 		#                  border             background         text
-		background $base 
+		background $bg 
 		focused_workspace  $mauve $mauve $mantle
-		inactive_workspace  $overlay0  $overlay0 $text
+        inactive_workspace $bg $bg #d8dee9
 	}
 
 }

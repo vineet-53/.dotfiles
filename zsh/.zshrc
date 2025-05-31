@@ -3,6 +3,8 @@ ZSH=$HOME/.oh-my-zsh
 export PATH="$HOME/personal/neovim/build/bin:/usr/bin:/bin:$HOME/.local/share/bin:/usr/local/bin/nvim-linux64/bin:/usr/sbin:$HOME/.local/bin:$HOME/go/bin"
 
 # Starship
+# eval "$(starship init bash)"
+
 ZSH_THEME="robbyrussell"
 
 

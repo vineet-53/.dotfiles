@@ -26,7 +26,7 @@ opt.ignorecase = true  -- Ignore case when searching (e.g., 'foo' will match 'Fo
 opt.smartcase = true  -- If search includes uppercase letters, make search case-sensitive
 opt.smartindent = true  -- Automatically indent new lines based on context (for languages with braces)
 opt.incsearch = true  -- Incrementally highlight matching text as you type a search pattern
-opt.foldmethod = "indent"  -- Set the folding method to "indent", so folding is based on indentation level
+opt.foldmethod = "manual"  -- Set the folding method to "indent", so folding is based on indentation level
 
 -- Miscellaneous settings
 opt.scrolloff = 10  -- Keep 10 lines visible above and below the cursor while scrolling

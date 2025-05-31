@@ -21,12 +21,12 @@ volume master {
 	device = "default"
 	mixer = "Master"
 	mixer_idx = 0
-	format = "  %volume "
-	format_muted = "🔇 "
+	format = "   %volume "
+	format_muted = "🔇 Muted"
 }
 
 wireless _first_ {
-	format_up = "  %quality » %essid "
+	format_up = "   %quality » %essid "
 	format_down = ""
 }
 
@@ -51,7 +51,7 @@ battery all {
 }
 
 time {
-	format = " %d.%m %H:%M"
+    format = " %a %d/%m/%y  %H:%M"
 }
 
 load {

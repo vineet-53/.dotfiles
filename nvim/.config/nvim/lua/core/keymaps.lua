@@ -122,3 +122,17 @@ map("n", "<C-w>", "<cmd> bd <CR>", opts)
 -- Copy the title of the current file to clipboard
 map("n", "YY", "va{Vy", opts)
 
+-- Close all folds
+map("n", "<leader>fc", ":foldclose<CR>")
+
+-- Open all folds
+map("n", "<leader>fo", ":foldopen<CR>")
+
+-- Close all folds in buffer
+map("n", "<leader>fC", "zM")
+
+-- Open all folds in buffer
+map("n", "<leader>fO", "zR")
+
+-- Toggle fold under cursor
+map("n", "<leader>ft", "za")

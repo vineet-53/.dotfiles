@@ -4,18 +4,18 @@ function ColorMyPencils(color)
 end
 
 return {
-    {
-        "rose-pine/neovim",
-        name = "rose-pine",
-        config = function()
-            require('rose-pine').setup({
-                styles = {
-                    italic = false,
-                },
-            })
+	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+		config = function()
+			require("rose-pine").setup({
+				styles = {
+					italic = false,
+				},
+			})
 
-           vim.cmd('colorscheme rose-pine'); 
-           ColorMyPencils();
-        end
-    },
+			vim.cmd("colorscheme rose-pine-moon")
+			ColorMyPencils()
+		end,
+	},
 }
