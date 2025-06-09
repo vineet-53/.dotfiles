@@ -175,4 +175,3 @@ function in {
 export COLORTERM=truecolor
 
 alias i="sudo apt install"
-alias vim="nvim "

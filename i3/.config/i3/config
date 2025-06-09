@@ -25,6 +25,7 @@ assign [class="firefox"] 1
 assign [class="chrome"] 1
 assign [class="rnote"] 2
 assign [class="ghostty"] 3
+assign [class="kitty"] 3
 assign [class="Postman"] 4
 assign [class="thunderbird"] 8
 assign [class="geary"] 8
@@ -51,6 +52,7 @@ floating_modifier $mod
 
 #i3 lock 
 bindsym $mod+x exec i3lock --show-failed-attempts -i ~/Pictures/wallpapers/keyhole-1920x1080.png
+bindsym $mod+shift+w exec ~/.local/share/bin/set_random_wall.sh
 
 # start a program
 bindsym $mod+Return exec $terminal
@@ -64,7 +66,7 @@ bindsym $mod+q kill
 
 # auto start
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
-exec_always --no-startup-id ~/.xinitrc
+exec --no-startup-id ~/.xinitrc
 exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id nm-applet
 exec --no-startup-id ~/.config/i3/display/hdmi-on.sh
@@ -86,8 +88,8 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
 bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
 
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 5%+
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +10%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s -10%
 
 #clipboard manager
 bindsym $mod+v exec --no-startup-id copyq toggle
