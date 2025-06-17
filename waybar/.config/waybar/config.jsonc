@@ -1,0 +1,284 @@
+{
+  "position": "bottom",
+  "mod": "dock",
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  "height": 20,
+  "modules-left": [
+    "hyprland/workspaces",
+    "hyprland/window",
+  ],
+  "modules-right": [
+    "cpu",
+    "pulseaudio#microphone",
+    "pulseaudio",
+    "battery",
+    "backlight",
+    "clock",
+    "tray", 
+    "custom/power",
+  ],
+  "hyprland/window": {
+    "format": "{}",
+    "separate-outputs": true,
+    "rewrite": {
+      // desktop
+      "": "<span foreground='#89b4fa'> </span> Hyprland",
+      // terminal
+      "sejjy@archlinux:(.*)": "  $1",
+      "(.*)sejjy@archlinux:~": "  sejjy@archlinux",
+      // Firefox
+      "(.*) — Mozilla Firefox": "<span foreground='#f38ba8'>󰈹 </span> $1",
+      "(.*)Mozilla Firefox": "<span foreground='#f38ba8'>󰈹 </span> Firefox",
+      // VSCode
+      "(.*) - Visual Studio Code": "<span foreground='#89b4fa'>󰨞 </span> $1",
+      "(.*)Visual Studio Code": "<span foreground='#89b4fa'>󰨞 </span> Visual Studio Code",
+      // Spotify
+      "(.*)Spotify": "<span foreground='#a6e3a1'> </span> Spotify",
+      "(.*)Spotify Premium": "<span foreground='#a6e3a1'> </span> Spotify Premium",
+      // Discord
+      "vesktop": "<span foreground='#89b4fa'> </span> Discord",
+      "• Discord(.*)": "Discord$1",
+      "(.*)Discord(.*)": "<span foreground='#89b4fa'> </span> $1Discord$2",
+      // OBS Studio
+      "OBS(.*)": "<span foreground='#a6adc8'>󰐌 </span> OBS Studio",
+      // VLC Media Player
+      "VLC media player": "<span foreground='#fab387'>󰕼 </span> VLC Media Player",
+      "(.*) - VLC media player": "<span foreground='#fab387'>󰕼 </span> $1",
+      // GIMP
+      "GNU Image Manipulation Program": "<span foreground='#a6adc8'> </span> GNU Image Manipulation Program",
+      // Godot
+      "Godot": "<span foreground='#89b4fa'> </span> Godot Engine",
+      "Godot Engine - (.*)": "<span foreground='#89b4fa'> </span> $1",
+      "(.*) - Godot Engine": "<span foreground='#89b4fa'> </span> $1",
+      // OnlyOffice
+      "ONLYOFFICE Desktop Editors": "<span foreground='#f38ba8'> </span> OnlyOffice Desktop",
+      "(.*).docx": "<span foreground='#89b4fa'> </span> $1.docx",
+      "(.*).xlsx": "<span foreground='#a6e3a1'> </span> $1.xlsx",
+      "(.*).pptx": "<span foreground='#fab387'> </span> $1.pptx",
+      "(.*).pdf": "<span foreground='#f38ba8'> </span> $1.pdf",
+      // file manager
+      "/": "  File Manager",
+      // qView
+      "qView": "  qView",
+      "(.*).jpg": "  $1.jpg",
+      "(.*).png": "  $1.png",
+      "(.*).svg": "  $1.svg",
+      // Timeshift
+      "Timeshift-gtk": "<span foreground='#a6e3a1'> </span> Timeshift",
+      // security
+      "Authenticate": "  Authenticate"
+    },
+    "min-length": 5,
+    "max-length": 45
+  },
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10"
+    },
+    "all-outputs": true,
+    "on-click": "activate"
+  },
+  "tray": {
+      "icon-size": 14,
+      "spacing": 10
+    },
+  "cpu": {
+    "interval": 1,
+    "format": "  {}%"
+  },
+  "memory": {
+    "interval": 1,
+    "format": "  {}%"
+  },
+  "clock": {
+    "format": "   {:%H:%M }",
+    "format-alt": "  {:%a, %b %e }",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "backlight": {
+    "format": "{icon} {percent}%",
+        "format-icons": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+  },
+  "battery": {
+    "states": {
+      "good": 75,
+      "warning": 30,
+      "critical": 15,
+    },
+     "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-full": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{icon} {time}",
+    "format-icons": [
+      "  ",
+      "  ",
+      "  ",
+      "  ",
+      "  "
+    ]
+  },
+  "pulseaudio": {
+     "scroll-step": 5,
+      "format": "{icon}   {volume}%",
+      "format-bluetooth": "{icon} {volume}% ",
+      "format-bluetooth-muted": " {icon}",
+      "format-muted": "",
+      "format-icons": {
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "default": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  },
+  "pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": "   {volume}%",
+    "format-source-muted": "  Muted",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+    "on-click-right": "pavucontrol -t 4",
+    "on-scroll-up": "pamixer --default-source -i 5",
+    "on-scroll-down": "pamixer --default-source -d 5",
+    "scroll-step": 5,
+  },
+  "network": {
+    "on-click": "sh ~/.local/share/bin/wifimenu.sh",
+    "format-wifi": "<span size='10000' foreground='#f5e0dc'>  </span>{essid}",
+    "format-ethernet": "<span size='13000' foreground='#f5e0dc'>󰤭  </span> Disconnected",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "<span size='13000' foreground='#f5e0dc'>  </span>Disconnected",
+    "tooltip-format-wifi": "Signal Strenght: {signalStrength}%",
+  },
+  "bluetooth": {
+    "format": " {status}",
+    "format-disabled": "", // an empty format will hide the module
+    "format-connected": " {num_connections}",
+    "tooltip-format": "{device_alias}",
+    "tooltip-format-connected": " {device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}"
+  },
+  "mpris": {
+    "title-len": 40,
+    "interval": 1,
+    "album-len": 0,
+    "max-len": 60,
+    "format": "{player_icon} {artist} - {title}",
+    "format-paused": "{player_icon} {artist} - {title}",
+    "player-icons": {
+      "default": "▶",
+      "mpv": "🎵",
+      "spotify": " ",
+      "firefox": "",
+    },
+    "status-icons": {
+      "paused": ""
+    },
+    "ignored-players": [
+      "vlc",
+      "firefox",
+      "brave"
+    ]
+  },
+  "mpd": {
+    "format": "{stateIcon} {artist} - {title}",
+    "format-disconnected": "Disconnected ",
+    "format-stopped": "{stateIcon} {artist} - {title}",
+    "interval": 2,
+    "consume-icons": {
+      "on": " " // Icon shows only when "consume" is on
+    },
+    "repeat-icons": {
+      "on": " "
+    },
+    "single-icons": {
+      "on": " 1 "
+    },
+    "state-icons": {
+      "paused": " ",
+      "playing": " "
+    },
+    "tooltip-format": "MPD (connected)",
+    "tooltip-format-disconnected": "MPD (disconnected)"
+  },
+  "custom/network": {
+    "on-click": "sh ~/.local/share/bin/wifimenu.sh",
+    "format-wifi": "<span size='10000' foreground='#f5e0dc'>  </span>{essid}",
+    "format-ethernet": "<span size='13000' foreground='#f5e0dc'>󰤭  </span> Disconnected",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "<span size='13000' foreground='#f5e0dc'>  </span>Disconnected",
+    "tooltip-format-wifi": "Signal Strenght: {signalStrength}%",
+  },
+  "custom/pacman": {
+    "format": "  {}",
+    "interval": 100,
+    "exec": "~/.local/scripts/checkupdate",
+    "exec-if": "exit 0",
+    "on-click": "alacritty -e paru"
+  },
+  "custom/pomodoro": {
+    "exec": "i3-gnome-pomodoro status --format=waybar --show-seconds | awk '{gsub(/Pomodoro /,\"\")}1'",
+    "return-type": "json",
+    "interval": 1,
+    "format": " {}",
+    "on-click": "i3-gnome-pomodoro toggle",
+    "on-middle-click": "i3-gnome-pomodoro stop",
+    "on-right-click": "i3-gnome-pomodoro start-stop"
+  },
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": " <span foreground='red'><sup></sup></span>",
+      "none": " ",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": " ",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": " ",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": " "
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click-right": "sleep 0.1 && swaync-client -d -sw",
+    "escape": true
+  },
+  "custom/power": {
+        "tooltip": false,
+        "on-click": "wlogout &",
+        "format": " "
+  },
+  
+}

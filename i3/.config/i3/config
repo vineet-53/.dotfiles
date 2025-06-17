@@ -1,0 +1,285 @@
+set $win Mod4
+set $mod Mod1
+set $terminal kitty 
+set $gmail geary 
+set $menu dmenu_run
+set $files thunar
+set $browser google-chrome-stable
+for_window [class="^.*"] border pixel 1
+
+default_border pixel 1
+default_floating_border normal 0
+
+gaps inner 8 
+gaps outer 1
+
+for_window [class="vol|ttrm|mus|fm|news"] floating enable, resize set 1400 800, move scratchpad, border pixel 0
+
+floating_minimum_size 75 x 50
+floating_maximum_size -1 x -1
+
+#font pango:JetBrainsMono Nerd Font Mono
+font pango:Meslo LGM Nerd Font
+
+assign [class="firefox"] 1
+assign [class="chrome"] 1
+assign [class="rnote"] 2
+assign [class="ghostty"] 3
+assign [class="kitty"] 3
+assign [class="Postman"] 4
+assign [class="thunderbird"] 8
+assign [class="geary"] 8
+assign [class="whatsapp-linux-desktop"] 9
+
+assign [class="LibreWolf"] 2
+assign [class="Brave-browser"] 2
+assign [class="obsidian"] 4
+assign [class="Meld"] 4
+assign [class="Spotify"] 7
+assign [class="FreeTube"] 7
+assign [class="akregator"] 7
+assign [class="Xournalpp"] 8
+
+# exec --no-startup-id firefox
+# exec --no-startup-id calendar
+exec --no-startup-id kitty
+exec --no-startup-id google-chrome-stable
+exec --no-startup-id rnote
+exec --no-startup-id geary 
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+#i3 lock 
+bindsym $mod+x exec i3lock --show-failed-attempts -i ~/Pictures/wallpapers/keyhole-1920x1080.png
+bindsym $mod+shift+w exec ~/.local/share/bin/set_random_wall.sh
+
+# start a program
+bindsym $mod+Return exec $terminal
+bindsym $win+e  exec $files
+
+# gmail 
+bindsym $mod+g exec $gmail
+
+# kill focused window
+bindsym $mod+q kill
+
+# auto start
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
+exec --no-startup-id ~/.xinitrc
+exec --no-startup-id xrdb -merge ~/.Xresources
+exec --no-startup-id nm-applet
+exec --no-startup-id ~/.config/i3/display/hdmi-on.sh
+exec --no-startup-id copyq
+# exec --no-startup-id setxkbmap -option ctrl:nocaps
+#exec_always --no-startup-id ~/pen.sh
+
+bindsym Print exec maim "/home/$USER/Pictures/$(date).jpg"
+bindsym $mod+Print exec maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date).jpg"
+bindsym Shift+$mod+s exec maim --select "/home/$USER/Pictures/$(date).jpg"
+
+bindsym Ctrl+Shift+$mod+1 exec $HOME/.config/i3/display/hdmi-off.sh && $HOME/.config/i3/display/edp-on.sh
+bindsym Ctrl+Shift+$mod+2 exec $HOME/.config/i3/display/edp-on.sh && $HOME/.config/i3/display/extend-screen.sh
+bindsym Ctrl+Shift+$mod+3 exec $HOME/.config/i3/display/edp-off.sh && $HOME/.config/i3/display/hdmi-on.sh
+
+set $refresh_i3status killall -SIGUSR1 i3status
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
+bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
+
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +10%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s -10%
+
+#clipboard manager
+bindsym $mod+v exec --no-startup-id copyq toggle
+
+
+# rofi start
+bindsym $mod+space exec --no-startup-id dmenu_run
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+# bindsym $mod+p split h
+
+# split in vertical orientation
+# bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+# bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+# bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# variable for workspace
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# set $ws1 " 1  "
+# set $ws2 " 2  "
+# set $ws3 " 3  "
+
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+set $rosewater #f5e0dc
+set $bg #2e3440
+set $flamingo  #f2cdcd
+set $pink      #f5c2e7
+set $mauve     #a3be8c
+set $mauve-bak     #cba6f7
+set $red       #f38ba8
+set $maroon    #eba0ac
+set $peach     #fab387
+set $yellow    #f9e2af
+set $green     #a6e3a1
+set $teal      #94e2d5
+set $sky       #89dceb
+set $sapphire  #52b7ec
+set $blue      #89b4fa
+set $lavender  #b4befe
+set $text      #cdd6f4
+set $subtext1  #bac2de
+set $subtext0  #a6adc8
+set $overlay2  #9399b2
+set $overlay1  #7f849c
+set $overlay0  #6c7086
+set $surface2  #585b70
+set $surface1  #45475a
+set $surface0  #313244
+set $base      #1e1e2e
+set $mantle    #181825
+set $crust     #11111b
+
+# target                 title     bg    text      indicator    border
+client.focused           $mantle   $teal $mantle  $mauve $mauve
+client.focused_inactive  $overlay0 $base  $text    $overlay0 $overlay0
+client.unfocused         $overlay0 $base  $text    $overlay0 $overlay0
+client.urgent            $peach    $base  $peach   $peach  $peach
+client.placeholder       $overlay0 $base  $text    $overlay0  $overlay0
+client.background        $base
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+# bar {
+#         status_command i3status
+# }
+
+bar {
+    position top
+	status_command i3status  --config ~/.config/i3status/config
+    font pango:Meslo LGM Nerd Font 10
+    tray_padding 6
+    separator_symbol "|"
+    workspace_min_width 30
+    padding 3px 0
+    
+colors {
+		#                  border             background         text
+		background $bg 
+		focused_workspace  $mauve $mauve $mantle
+        inactive_workspace $bg $bg #d8dee9
+	}
+
+}
+
