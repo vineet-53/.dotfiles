@@ -18,8 +18,6 @@ BASIC_PKGS=(
     git 
     neovim 
     cmake 
-    flex 
-    bison 
     gedit
     nodejs-lts-jod 
 )
@@ -84,7 +82,7 @@ HYPR_PKGS=(
     cliphist                                     
     wl-clip-persist                             
     bat 
-    polkit-kde-agent                                   
+    polkit-gnome-agent                                   
     xdg-desktop-portal-hyprland                   
     xdg-user-dirs                              
     pacman-contrib                                         
@@ -93,7 +91,6 @@ HYPR_PKGS=(
     imagemagick                                         
     qt5-imageformats                                   
     ffmpegthumbs                                      
-    kde-cli-tools                                    
     libnotify                                       
     nwg-look                                              
     qt5ct                                                  
@@ -108,12 +105,13 @@ HYPR_PKGS=(
 
 
 CUSTOM_PKGS=(
+    flex 
+    bison 
     lazygit
     tmux 
     ghostty 
     kitty
     libinput-gestures
-    gestures
     power-profiles-daemon                                
     xdg-desktop-portal-gtk                                 
     wf-recorder                                          
@@ -224,7 +222,7 @@ basic_pkgs_install() {
     echo "UPDATING SYSTEM ...."
     yay -Syu 
     echo "INSTALLING BASIC PACKAGES" 
-    for item in "${BASE_PKGS[@]}"; do 
+    for item in "${BASIC_PKGS[@]}"; do 
         check_and_install "$item" 
     done 
 }
