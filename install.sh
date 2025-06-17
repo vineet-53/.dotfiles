@@ -318,6 +318,12 @@ generate_ssh () {
   xdg-open "https://github.com/settings/keys"
 } 
 
+setup_theme () { 
+    [[ ! -d "$HOME/.themes/Nordic/" ]] && git clone https://github.com/EliverLara/Nordic.git ~/.themes/Nordic
+    echo "done installing theme" 
+    nwg-look
+}
+
 ask "install fonts" install_fonts
 ask "install yay" install_yay
 ask "zsh setup" install_zsh
@@ -328,4 +334,5 @@ ask "Brave" install_brave
 ask "Hyprland with ecosystem" install_hyprland 
 ask "Custom packages" install_custom_pkgs 
 ask "generate ssh key" generate_ssh
+ask "setup nordic gtk theme" setup_theme
 
