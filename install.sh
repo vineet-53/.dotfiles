@@ -13,6 +13,7 @@ NVIDIA_PKGS=(
 BASIC_PKGS=(
     tldr
     base-devel 
+    archlinux-keyring
     git 
     vim 
     git 
@@ -23,21 +24,13 @@ BASIC_PKGS=(
 )
 
 FONTS=( 
-    noto-fonts
-    noto-fonts-emoji
-    noto-fonts-cjk
     ttf-jetbrains-mono
-    noto-fonts-extra
-    adobe-source-code-pro-fonts
-    noto-fonts-emoji
+    ttf-jetbrains-mono-nerd
     otf-font-awesome
     ttf-droid
     ttf-fira-code
-    ttf-fantasque-nerd
-    ttf-jetbrains-mono
-    ttf-jetbrains-mono-nerd
-    ttf-victor-mono
-    noto-fonts
+    ttf-cascadia-code
+    ttf-meslo-nerd
 )
 
 HYPR_PKGS=(
@@ -46,7 +39,6 @@ HYPR_PKGS=(
     hyprlock
     hypridle
     hyprpicker
-    hyprsunset                                 
     egl-wayland
     lib32-nvidia-utils
     grimblast
@@ -228,6 +220,7 @@ basic_pkgs_install() {
 }
 
 install_nvidia(){  
+    check_and_install gedit
     echo "Enable Multilib repository"
     echo "Uncomment [multilib] Include = /etc/pacman.d/mirrorlist"
     sudo gedit /etc/pacman.conf
@@ -324,15 +317,15 @@ setup_theme () {
     nwg-look
 }
 
-ask "install fonts" install_fonts
 ask "install yay" install_yay
+ask "install fonts" install_fonts
 ask "zsh setup" install_zsh
 ask "source configs" source_config_files
-ask "Nvidia-drivers" install_nvidia
 ask "vineet-53/dotfiles" install_dotfiles
 ask "Brave" install_brave
 ask "Hyprland with ecosystem" install_hyprland 
 ask "Custom packages" install_custom_pkgs 
 ask "generate ssh key" generate_ssh
 ask "setup nordic gtk theme" setup_theme
+ask "Nvidia-drivers" install_nvidia
 
