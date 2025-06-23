@@ -233,18 +233,9 @@ install_nvidia(){
       check_and_install "$item" 
     done 
 
-    echo "add these line GRUB_CMDLINE_LINUX_DEFAULT='nvidia-drm.modeset=1 nvidia-drm.fbdev=1'"
-    sudo gedit /etc/default/grub 
-
-    while read -p "Is grub config correct ? (y/n) " res; do 
-        echo "MAKING GRUB CONFIG..." 
-        sudo grub-mkconfig -o /boot/grub/grub.cfg
-        if [[ $res == "y" ]]; then
-            break
-        fi
-    done
-
-
+    echo "READ AND APPLY: "
+    xdg-open https://github.com/korvahannu/arch-nvidia-drivers-installation-guide
+    tmux 
 }
 
 install_yay() { 
@@ -322,10 +313,9 @@ ask "install fonts" install_fonts
 ask "zsh setup" install_zsh
 ask "source configs" source_config_files
 ask "vineet-53/dotfiles" install_dotfiles
-ask "Brave" install_brave
 ask "Hyprland with ecosystem" install_hyprland 
 ask "Custom packages" install_custom_pkgs 
-ask "generate ssh key" generate_ssh
-ask "setup nordic gtk theme" setup_theme
+# ask "setup nordic gtk theme" setup_theme
 ask "Nvidia-drivers" install_nvidia
+ask "generate ssh key" generate_ssh
 
