@@ -1,21 +1,9 @@
-function ColorMyPencils(color)
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-end
-
 return {
-	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-		config = function()
-			require("rose-pine").setup({
-				styles = {
-					italic = false,
-				},
-			})
-
-			vim.cmd("colorscheme rose-pine-moon")
-			ColorMyPencils()
-		end,
-	},
+	"navarasu/onedark.nvim",
+	config = function()
+		require("onedark").setup({
+			style = "dark",
+		})
+		require("onedark").load()
+	end,
 }

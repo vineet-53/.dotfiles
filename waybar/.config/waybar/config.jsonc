@@ -7,7 +7,7 @@
   "modules-left": [
     "custom/launcher",
     "hyprland/workspaces",
-    "custom/media",
+    "custom/media"
   ],
   "modules-center": [
     "clock"
@@ -22,8 +22,7 @@
   ],
 
   "custom/launcher": {
-    "format": "",
-    "tooltip-format": "Launch your favorite apps"
+    "format": " " ,
   },
 
   "custom/media": {
@@ -72,14 +71,12 @@
   },
 
   "network": {
-    "interface": "wlo1",
-    "format": "{}",
-    "format-wifi": "{icon}  {essid}",
-    "format-ethernet": "󰈀  {ipaddr}/{cidr}",
-    "format-disconnected": "󰤭  Disconnected",
-    "max-length": 50,
-    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
-    "tooltip-format": "Connected to {essid}"
+      // "interface": "wlp2*", // (Optional) To force the use of this interface
+      "format-wifi": "  {essid}",
+      "format-ethernet": "{ipaddr}/{cidr} ",
+      "format-linked": "{ifname} (No IP) ",
+      "format-disconnected": "Disconnected ⚠",
+      "on-click" :"~/.local/bin/wifimenu.sh &"
   },
 
   "hyprland/workspaces": {
@@ -138,7 +135,11 @@
     "icon": true,
     "icon-size": 18
 },
-  
+  "tray": {
+        "icon-size": 14,
+        "spacing": 15
+  },
+
   "cpu": {
     "interval": 10,
     "format": "    {}%",

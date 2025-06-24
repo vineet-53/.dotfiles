@@ -65,17 +65,22 @@ window#waybar {
 #memory,
 #disk,
 #tray,
-#custom-launcher,
 #custom-notification,
 #power-profiles-daemon {
+  background-color: @surface_container_low;
   color: @primary;
-  background-color: @surface_container;
   padding: 0 15px 0 15px;
   margin: 0 0 0 12px;
 }
 
 #tray > .widget {
     border-radius: 0%;  /* This makes icons round */
+}
+
+#custom-launcher{ 
+  background-color: @surface_container_low;
+  margin: 0 0 0 15px;
+  padding: 0 8px 0 13px;
 }
 
 #custom-power { 

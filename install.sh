@@ -73,7 +73,7 @@ HYPR_PKGS=(
     cliphist                                     
     wl-clip-persist                             
     bat 
-    polkit-gnome-agent                                   
+    polkit-gnome
     xdg-desktop-portal-hyprland                   
     xdg-user-dirs                              
     pacman-contrib                                         
@@ -96,6 +96,13 @@ HYPR_PKGS=(
 
 
 CUSTOM_PKGS=(
+    catppuccin-cursors-mocha
+    catpuccin-gtk-mocha
+    # catpuccin-kvantum
+    curl
+    luarocks
+    fd
+    yt-dlp
     papirus-icon-theme
     papirus-folders
     flex 
@@ -307,13 +314,21 @@ setup_theme () {
     papirus-folders -C blue
 }
 
+install_node() { 
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+  source ~/.zshrc
+  nvm install 22
+}
+
 #install_yay 
 #install_fonts 
 #install_zsh 
-#install_custom_pkgs
+install_custom_pkgs
 #install_hyprland 
 #install_dotfiles
 #source_config_files
-generate_ssh
+# generate_ssh
+# install_node
+
 
 #setup_theme 

@@ -1,6 +1,6 @@
 ZSH=$HOME/.oh-my-zsh
 
-export PATH="/usr/bin:$HOME/.local/bin"
+export PATH="/usr/bin:$HOME/.local/bin/"
 
 # Starship
 # eval "$(starship init bash)"
