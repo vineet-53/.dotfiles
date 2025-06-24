@@ -1,17 +1,14 @@
-# Path to your oh-my-zsh installation.
 ZSH=$HOME/.oh-my-zsh
-export PATH="$HOME/personal/neovim/build/bin:/usr/bin:/bin:$HOME/.local/share/bin:/usr/local/bin/nvim-linux64/bin:/usr/sbin:$HOME/.local/bin:$HOME/go/bin"
+
+export PATH="/usr/bin:$HOME/.local/bin"
 
 # Starship
 # eval "$(starship init bash)"
 
 ZSH_THEME="agnoster"
 
-
 # List Plugins
 plugins=(git history encode64 copypath zsh-autosuggestions zsh-syntax-highlighting web-search)
-
-#plugins=(git history encode64 copypath  web-search)
 
 # sources
 source $ZSH/oh-my-zsh.sh
@@ -43,22 +40,16 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
-# Always mkdir a path (this doesn't inhibit functionality to make a single dir)
+
 alias mkdir='mkdir -p'
 
-
-#Display Pokemon
-# pokemon-colorscripts --no-title -r 1,3,6
 
 # Custom app alias
 alias ml="cd /mnt/d/codes/machine-learning"
 alias zc="nvim ~/.zshrc"
 alias zs="source ~/.zshrc"
 
-# alias t="tmux "
 alias ta="tmux attach "
-# alias tas="tmux attach-session "
-# alias t="sh ~/.local/share/bin/tmux-sessionizer.sh"
 alias setwall="swww img --transition-type=random "
 alias notes="~/Documents/Obsidian-Notes && nvim"
 alias lc="nvim leetcode.nvim"
@@ -68,7 +59,8 @@ alias lg="lazygit"
 alias docker-compose="$HOME/.docker/cli-plugins/docker-compose"
 alias ld="lazydocker"
 alias rg="sh search.sh"
-#obsidian
+
+# Obsidian
 alias oo='cd /mnt/e/obsidian-notes/ && vim '
 
 # Custom dir alias
@@ -177,3 +169,4 @@ export COLORTERM=truecolor
 alias i="yay -S "
 alias vim="nvim "
 alias hc="cd $HOME/.config/hypr/ && nvim ."
+alias df="cd $HOME/dotfiles/"
