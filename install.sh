@@ -60,7 +60,6 @@ HYPR_PKGS=(
     playerctl                                              # media controls
     udiskie                                                # manage removable media
     btop
-    dunst                                                  
     rofi-wayland                                          
     wofi 
     wofi-calc
@@ -97,6 +96,8 @@ HYPR_PKGS=(
 
 
 CUSTOM_PKGS=(
+    papirus-icon-theme
+    papirus-folders
     flex 
     bison 
     lazygit
@@ -245,7 +246,6 @@ install_yay() {
     cd yay
     makepkg -si
     cd $HOME 
-    rm -r yay 
     echo "UPDATING SYSTEM ...."
     yay -Syu 
     echo "INSTALLING REQUIRED PACKAGES" 
@@ -276,12 +276,10 @@ install_zsh() {
 
 source_config_files() {
   cd $HOME
-  if [[ ! -d  ".tmux" ]]; then 
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 
     tmux new-session -d -s tmux-source
     tmux send-keys -t tmux-source 'tmux source ~/.tmux.conf' C-m 
     tmux kill-server
-  fi
   cd $HOME 
 } 
 
@@ -306,16 +304,16 @@ setup_theme () {
     [[ ! -d "$HOME/.themes/Nordic/" ]] && git clone https://github.com/EliverLara/Nordic.git ~/.themes/Nordic
     echo "done installing theme" 
     nwg-look
+    papirus-folders -C blue
 }
 
-ask "install yay" install_yay
-ask "install fonts" install_fonts
-ask "zsh setup" install_zsh
-ask "source configs" source_config_files
-ask "vineet-53/dotfiles" install_dotfiles
-ask "Hyprland with ecosystem" install_hyprland 
-ask "Custom packages" install_custom_pkgs 
-# ask "setup nordic gtk theme" setup_theme
-ask "Nvidia-drivers" install_nvidia
-ask "generate ssh key" generate_ssh
+#install_yay 
+#install_fonts 
+#install_zsh 
+#install_custom_pkgs
+#install_hyprland 
+#install_dotfiles
+#source_config_files
+generate_ssh
 
+#setup_theme 

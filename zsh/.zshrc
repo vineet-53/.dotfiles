@@ -5,7 +5,7 @@ export PATH="$HOME/personal/neovim/build/bin:/usr/bin:/bin:$HOME/.local/share/bi
 # Starship
 # eval "$(starship init bash)"
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 
 
 # List Plugins
