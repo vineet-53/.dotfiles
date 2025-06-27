@@ -1,22 +1,11 @@
 return {
 	{
-		"jay-babu/mason-null-ls.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = {
-			"williamboman/mason.nvim",
-			"nvimtools/none-ls.nvim",
-		},
-		config = function()
-			require("mason-null-ls").setup({
-				ensure_installed = { "prettierd", "eslint_d", "stylua" },
-			})
-		end,
-	},
-	{
 		"williamboman/mason.nvim",
 		lazy = false,
 		config = function()
-			require("mason").setup()
+			require("mason").setup({
+				ensure_installed = { "emmet-ls", "prettier" },
+			})
 		end,
 	},
 	{
@@ -37,21 +26,42 @@ return {
 				vim.lsp.protocol.make_client_capabilities(),
 				cmp_nvim_lsp.default_capabilities()
 			)
-
 			local lspconfig = require("lspconfig")
 
 			lspconfig.tailwindcss.setup({
 				capabilities = capabilities,
-			})
-			lspconfig.ruby_lsp.setup({
-				capabilities = capabilities,
-				cmd = { "/home/typecraft/.asdf/shims/ruby-lsp" },
 			})
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 			})
 			lspconfig.clangd.setup({
 				capabilities = capabilities,
+			})
+			lspconfig.emmet_ls.setup({
+				capabilities = capabilities,
+				filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
+			})
+			lspconfig.ast_grep.setup({
+				capabilities = capabilities,
+				filetypes = {
+					"c",
+					"cpp",
+					"rust",
+					"go",
+					"java",
+					"python",
+					"javascript",
+					"javascriptreact",
+					"javascript.jsx",
+					"typescript",
+					"typescriptreact",
+					"typescript.tsx",
+					"html",
+					"css",
+					"kotlin",
+					"dart",
+					"lua",
+				},
 			})
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
