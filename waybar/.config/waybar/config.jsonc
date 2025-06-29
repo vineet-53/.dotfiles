@@ -103,30 +103,45 @@
       "on-click" :"~/.local/bin/wifimenu.sh &"
   },
 
+  // "hyprland/workspaces": {
+  //   "format": "{icon}",
+  //   "on-click": "activate",
+  //   "format-icons": {
+  //     "1": "1",
+  //     "2": "2",
+  //     "3": "3",
+  //     "4": "4",
+  //     "5": "5",
+  //     "6": "6",
+  //     "7": "7",
+  //     "8": "8",
+  //     "9": "9",
+  //     "10": "10"
+  //   },
+  //   "persistent-workspaces": {
+  //     "1": "1",
+  //     "2": "2",
+  //     "3": "3",
+  //     "4": "4",
+  //     "5": "5"
+  //   }
+  // },
+  
   "hyprland/workspaces": {
     "format": "{name}",
-    "on-click": "activate",
     "format-icons": {
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4",
-      "5": "5",
-      "6": "6",
-      "7": "7",
-      "8": "8",
-      "9": "9",
-      "10": "10"
+      "active": "",
+      "default": "",
+      "persistent": ""
     },
-    "persistent-workspaces": {
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4",
-      "5": "5"
+    "on-scroll-up": "hyprctl dispatch workspace r-1",
+    "on-scroll-down": "hyprctl dispatch workspace r+1",
+    "all-outputs": false,
+    "persistent_workspaces": {
+      "*": 5
     }
   },
-
+  
   "backlight": {
     "device": "intel_backlight",
     "format": "{icon}   {percent}%",
@@ -160,7 +175,7 @@
     "icon-size": 18
 },
   "tray": {
-        "icon-size": 14,
+        "icon-size": 10,
         "spacing": 15
   },
 

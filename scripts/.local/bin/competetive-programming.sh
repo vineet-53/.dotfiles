@@ -8,6 +8,14 @@
 # URL="https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2"
 # xdg-open "$URL"
 
+urls=(
+  "https://www.tle-eliminators.com/cp-sheet"
+  "https://mail.google.com/mail/u/0/#inbox"
+)
+
+# Open all URLs in a new Firefox window
+firefox "${urls[@]}"
+
 cd /mnt/d/codes/cp/
 
 SESSION_NAME="cp"

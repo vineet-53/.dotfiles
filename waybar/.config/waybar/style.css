@@ -62,9 +62,6 @@ button:hover {
 }
 
 /* you can set a style on hover for any module like this */
-#pulseaudio:hover {
-    background-color: #a37800;
-}
 
 #workspaces {
   background-color: @surface_container_low;
@@ -74,8 +71,8 @@ button:hover {
 }
 
 #workspaces button.active {
-  color: #ffffff;
-  background-color : rgba(100,100,240,.9);
+  color: #000000;
+  background-color : #98C379;
 }
 
 #workspaces button {
@@ -88,6 +85,7 @@ button:hover {
 
 #workspaces button:hover {
     background: rgba(0, 0, 0, 0.2);
+    color : white;
 }
 
 #workspaces button.focused {
@@ -130,11 +128,14 @@ button:hover {
     margin : 0 2px;
 }
 
+#window { 
+    padding: 0 18px;
+}
+
 #window,
 #workspaces {
     margin: 0 4px;
     background-color: @surface_container_low;
-    padding: 0 18px;
 
 }
 
@@ -146,6 +147,7 @@ button:hover {
 #custom-launcher{ 
   background-color: @surface_container_low;
   margin: 0 0 0 15px;
+  color : skyblue; 
   padding: 0 8px 0 13px;
 }
 
@@ -179,14 +181,14 @@ button:hover {
 }
 
 #battery.charging, #battery.plugged {
-    color: #ffffff;
-    background: @surface_container_low;
+    background-color : #98C379;
+    color: #2a5c45;
 }
 
 @keyframes blink {
     to {
         background-color: #ffffff;
-        color: #000000;
+        color: #FFFFFF;
     }
 }
 
@@ -201,6 +203,10 @@ button:hover {
     animation-direction: alternate;
 }
 
+#battery:not(.charging) {
+  color : #ffffff;
+}
+
 #custom-media {
     background-color: #66cc99;
     color: #2a5c45;
@@ -208,7 +214,7 @@ button:hover {
 }
 
 #custom-media.custom-spotify {
-    background-color: #66cc99;
+    background-color: #98C379;
 }
 
 #custom-media.custom-vlc {

@@ -14,7 +14,6 @@ plugins=(git history encode64 copypath zsh-autosuggestions zsh-syntax-highlighti
 source $ZSH/oh-my-zsh.sh
 
 bindkey -s ^f "tmux-sessionizer.sh\n"
-bindkey -s ^r "find-recurrsive.sh\n"
 bindkey -s ^o "competetive-programming.sh\n"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
