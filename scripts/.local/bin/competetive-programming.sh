@@ -1,29 +1,18 @@
 #!/bin/bash
 
-# URL="https://earthshakira.github.io/a2oj-clientside/server/Ladders.html"
-# xdg-open "$URL"
-# URL="https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems/"
-# xdg-open "$URL"
-# URL="https://www.tle-eliminators.com/cp-sheet"
-# URL="https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2"
-# xdg-open "$URL"
+if [[ -d "$HOME/programming/" ]];then 
+  cd "/mnt/d/codes/cp/a_codes/"
+elif [[ -d "/mnt/d/codes/cp/" ]];then 
+  cd "$HOME/programming/"
+fi 
 
-urls=(
-  "https://www.tle-eliminators.com/cp-sheet"
-  "https://mail.google.com/mail/u/0/#inbox"
-)
 
-# Open all URLs in a new Firefox window
-firefox "${urls[@]}"
-
-cd /mnt/d/codes/cp/
-
-SESSION_NAME="cp"
+SESSION_NAME="competetive-programming"
 
 function create_new_session() { 
     tmux new-session -d -s $SESSION_NAME
     tmux rename-window $SESSION_NAME
-    tmux send-keys -t 0 "nvim main.cpp" C-m
+    tmux send-keys -t 0 "nvim a.cpp" C-m
     tmux select-pane -t 0
     tmux attach-session -t $SESSION_NAME
 }

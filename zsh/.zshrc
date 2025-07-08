@@ -1,5 +1,7 @@
 ZSH=$HOME/.oh-my-zsh
 
+export MONITOR_STATUS=auto # auto / forced
+export EDITOR=/usr/bin/nvim
 export PATH="/usr/bin:$HOME/.local/bin/"
 
 # Starship
@@ -166,6 +168,7 @@ function in {
 export COLORTERM=truecolor
 
 alias i="yay -S "
-alias vim="nvim "
 alias hc="cd $HOME/.config/hypr/ && nvim ."
 alias df="cd $HOME/dotfiles/"
+alias tks="tmux kill-server"
+alias vim="nvim "

@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Directory containing markdown files
-VAULT_DIR="/mnt/drive2/obsidian-notes"
+VAULT_DIR="/mnt/e/obsidian-notes"
 SOURCE_DIR="00_Inbox"
 DEST_DIR="03_Notes"
 

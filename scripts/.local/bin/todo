@@ -1,0 +1,7 @@
+#!/bin/sh
+path='/mnt/e/obsidian-notes'
+folder='/mnt/e/obsidian-notes/01_Tasks'
+formatted_file_name=$(date '+%d-%m-%Y').md
+cd "${path}" || exit
+touch "${folder}/${formatted_file_name}"
+nvim "${folder}/${formatted_file_name}"

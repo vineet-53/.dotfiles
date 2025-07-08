@@ -96,9 +96,9 @@ HYPR_PKGS=(
 
 
 CUSTOM_PKGS=(
-    catppuccin-cursors-mocha
-    catpuccin-gtk-mocha
-    # catpuccin-kvantum
+    kvantum
+    pywal-git 
+    matugen
     curl
     luarocks
     fd
