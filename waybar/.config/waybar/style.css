@@ -2,7 +2,7 @@
 
 * {
   font-family: "Meslo LGM nerd font", "JetBrainsMono Nerd Font ", sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 20px;
   font-weight: bold;
 }
@@ -98,9 +98,8 @@ window#waybar.empty #window {
 
 
 #custom-launcher{ 
-  background-color: @surface_container_low;
   margin: 0 0 0 15px;
-  color : skyblue; 
+  color : @primary_fixed_dim; 
   padding: 0 8px 0 13px;
 }
 
